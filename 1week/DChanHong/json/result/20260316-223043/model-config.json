@@ -1,9 +1,0 @@
-{
-  "model": "gemini-3-flash-preview",
-  "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
-  "response_format": {
-    "type": "json_schema",
-    "json_schema_name": "inquiry_analysis"
-  },
-  "reasoning_effort": "low"
-}
