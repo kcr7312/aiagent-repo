@@ -3,8 +3,28 @@ import json
 import os
 from datetime import datetime
 
+def _get_env_float(name: str) -> float | None:
+    value = os.getenv(name)
+    return float(value) if value is not None else None
+
+def _get_env_int(name: str) -> int | None:
+    value = os.getenv(name)
+    return int(value) if value is not None else None
+
 def main():
     service = GeminiService()
+    generation_overrides = {
+        "temperature": _get_env_float("GEN_TEMPERATURE"),
+        "top_p": _get_env_float("GEN_TOP_P"),
+        "max_tokens": _get_env_int("GEN_MAX_TOKENS"),
+        "presence_penalty": _get_env_float("GEN_PRESENCE_PENALTY"),
+        "frequency_penalty": _get_env_float("GEN_FREQUENCY_PENALTY"),
+        "seed": _get_env_int("GEN_SEED"),
+    }
+    generation_overrides = {
+        key: value for key, value in generation_overrides.items() if value is not None
+    }
+    run_label = os.getenv("RUN_LABEL")
 
     # JSON 파일 경로 (현재 파일 기준 상대 경로)
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -20,9 +40,13 @@ def main():
     os.makedirs(result_dir, exist_ok=True)
 
     # 모델 설정 저장
+    model_config = service.get_config()
+    model_config["run_overrides"] = generation_overrides
+    if run_label:
+        model_config["run_label"] = run_label
     model_config_path = os.path.join(result_dir, "model-config.json")
     with open(model_config_path, "w", encoding="utf-8") as f:
-        json.dump(service.get_config(), f, ensure_ascii=False, indent=2)
+        json.dump(model_config, f, ensure_ascii=False, indent=2)
 
     # 분석 결과를 담을 리스트
     analysis_results = []
@@ -41,7 +65,10 @@ def main():
         print(f"📩 고객 문의 ({customer['id']}): {text}")
 
         # 분석 실행
-        result, response_metadata = service.analyze_inquiry_with_usage(text)
+        result, response_metadata = service.analyze_inquiry_with_usage(
+            text,
+            **generation_overrides,
+        )
 
         # 결과 출력 (Pydantic 객체이므로 점(.)으로 접근 가능)
         print(f"📊 분석 결과:")
