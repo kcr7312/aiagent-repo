@@ -1,0 +1,52 @@
+[v1]
+- 전체 건수: 12
+- JSON 파싱 성공률: 8/12 (66.7%)
+- exact match 개수: 6/12 (50.0%)
+- 대표 실패 3건:
+  1) ticket-05
+     message: 배송지를 잘못 적었는데 아직 출고 전이면 수정하고 싶습니다.
+     expected: {'intent': 'order_change', 'urgency': 'medium', 'needs_clarification': False, 'route_to': 'order_ops'}
+     predicted: {'intent': 'order_change', 'urgency': 'high', 'needs_clarification': False, 'route_to': 'order_ops'}
+     원인: urgency 필드 불일치
+  2) ticket-06
+     message: 상품은 아직 받지 못했는데 앱에는 배송 완료로 떠 있습니다. 확인해주세요.
+     expected: {'intent': 'shipping_issue', 'urgency': 'high', 'needs_clarification': False, 'route_to': 'shipping_ops'}
+     predicted: None
+     error: 1 validation error for TicketOutput
+  Invalid JSON: EOF while parsing a string at line 1 column 81 [type=json_invalid, input_value='{"intent":"shipping_issu...cation":false,"route_to', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/json_invalid
+     원인: JSON 형식 오류 또는 출력 잘림으로 파싱 실패
+  3) ticket-09
+     message: 지난주에 요청드린 건이 아직도 처리되지 않은 것 같아요. 확인 좀 부탁드립니다.
+     expected: {'intent': 'other', 'urgency': 'high', 'needs_clarification': True, 'route_to': 'human_support'}
+     predicted: None
+     error: 1 validation error for TicketOutput
+  Invalid JSON: expected value at line 1 column 1 [type=json_invalid, input_value='Here is the JSON requested:', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/json_invalid
+     원인: JSON 형식 오류 또는 출력 잘림으로 파싱 실패
+
+[v2]
+- 전체 건수: 12
+- JSON 파싱 성공률: 12/12 (100.0%)
+- exact match 개수: 9/12 (75.0%)
+- 대표 실패 3건:
+  1) ticket-08
+     message: 포장은 안 뜯었는데 환불이 가능한지 먼저 알고 싶습니다.
+     expected: {'intent': 'refund_exchange', 'urgency': 'medium', 'needs_clarification': False, 'route_to': 'returns_ops'}
+     predicted: {'intent': 'refund_exchange', 'urgency': 'medium', 'needs_clarification': True, 'route_to': 'returns_ops'}
+     원인: needs_clarification 필드 불일치
+  2) ticket-09
+     message: 지난주에 요청드린 건이 아직도 처리되지 않은 것 같아요. 확인 좀 부탁드립니다.
+     expected: {'intent': 'other', 'urgency': 'high', 'needs_clarification': True, 'route_to': 'human_support'}
+     predicted: {'intent': 'other', 'urgency': 'high', 'needs_clarification': False, 'route_to': 'human_support'}
+     원인: needs_clarification 필드 불일치
+  3) ticket-11
+     message: 선물용으로 포장 가능한가요? 가능하면 이번 주 안에 받고 싶어요.
+     expected: {'intent': 'other', 'urgency': 'medium', 'needs_clarification': True, 'route_to': 'human_support'}
+     predicted: {'intent': 'other', 'urgency': 'medium', 'needs_clarification': False, 'route_to': 'human_support'}
+     원인: needs_clarification 필드 불일치
+
+
+[비교 요약]
+- 파싱 성공률: v1 66.7% → v2 100.0%
+- exact match: v1 6 → v2 9

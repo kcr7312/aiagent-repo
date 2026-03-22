@@ -1,0 +1,12 @@
+{"intent": "shipping_issue", "urgency": "medium", "needs_clarification": false, "route_to": "shipping_ops"}
+{"intent": "payment_issue", "urgency": "high", "needs_clarification": false, "route_to": "billing_ops"}
+{"intent": "order_change", "urgency": "medium", "needs_clarification": false, "route_to": "order_ops"}
+{"intent": "refund_exchange", "urgency": "medium", "needs_clarification": false, "route_to": "returns_ops"}
+{"intent": "order_change", "urgency": "medium", "needs_clarification": false, "route_to": "order_ops"}
+{"intent": "shipping_issue", "urgency": "high", "needs_clarification": false, "route_to": "shipping_ops"}
+{"intent": "payment_issue", "urgency": "high", "needs_clarification": false, "route_to": "billing_ops"}
+{"intent": "refund_exchange", "urgency": "low", "needs_clarification": false, "route_to": "returns_ops"}
+{"intent": "other",  "urgency": "medium",  "needs_clarification": true,  "route_to": "human_support"}
+{"intent": "other",  "urgency": "medium",  "needs_clarification": true,  "route_to": "human_support"}
+{"intent": "other",  "urgency": "low",  "needs_clarification": true,  "route_to": "human_support"}
+{"intent": "refund_exchange",  "urgency": "medium",  "needs_clarification": false,  "route_to": "returns_ops"}

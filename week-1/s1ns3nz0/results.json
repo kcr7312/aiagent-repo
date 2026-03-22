@@ -1,0 +1,740 @@
+{
+  "v1": {
+    "label": "v1",
+    "model": "claude-sonnet-4-20250514",
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "total_tickets": 12,
+    "parse_success": 12,
+    "parse_rate": "12/12 (100%)",
+    "exact_matches": 7,
+    "exact_match_rate": "7/12 (58%)",
+    "field_matches": {
+      "intent": 12,
+      "urgency": 8,
+      "clarification": 12,
+      "route": 11
+    },
+    "total_input_tokens": 2027,
+    "total_output_tokens": 561,
+    "results": [
+      {
+        "id": "ticket-01",
+        "raw_response": "{\n  \"intent\": \"shipping_issue\",\n  \"urgency\": \"medium\",\n  \"needs_clarification\": false,\n  \"route_to\": \"shipping_ops\"\n}",
+        "usage": {
+          "input_tokens": 175,
+          "output_tokens": 47
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "shipping_issue",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "shipping_ops"
+        },
+        "expected": {
+          "intent": "shipping_issue",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "shipping_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-02",
+        "raw_response": "{\n  \"intent\": \"payment_issue\",\n  \"urgency\": \"high\",\n  \"needs_clarification\": false,\n  \"route_to\": \"billing_ops\"\n}",
+        "usage": {
+          "input_tokens": 175,
+          "output_tokens": 47
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "payment_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "billing_ops"
+        },
+        "expected": {
+          "intent": "payment_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "billing_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-03",
+        "raw_response": "{\n  \"intent\": \"order_change\",\n  \"urgency\": \"medium\",\n  \"needs_clarification\": false,\n  \"route_to\": \"order_ops\"\n}",
+        "usage": {
+          "input_tokens": 175,
+          "output_tokens": 47
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "order_change",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "order_ops"
+        },
+        "expected": {
+          "intent": "order_change",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "order_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-04",
+        "raw_response": "{\n  \"intent\": \"refund_exchange\",\n  \"urgency\": \"medium\",\n  \"needs_clarification\": false,\n  \"route_to\": \"returns_ops\"\n}",
+        "usage": {
+          "input_tokens": 176,
+          "output_tokens": 48
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "refund_exchange",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "expected": {
+          "intent": "refund_exchange",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-05",
+        "raw_response": "{\n  \"intent\": \"order_change\",\n  \"urgency\": \"medium\",\n  \"needs_clarification\": false,\n  \"route_to\": \"order_ops\"\n}",
+        "usage": {
+          "input_tokens": 161,
+          "output_tokens": 47
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "order_change",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "order_ops"
+        },
+        "expected": {
+          "intent": "order_change",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "order_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-06",
+        "raw_response": "{\n  \"intent\": \"shipping_issue\",\n  \"urgency\": \"medium\",\n  \"needs_clarification\": false,\n  \"route_to\": \"shipping_ops\"\n}",
+        "usage": {
+          "input_tokens": 169,
+          "output_tokens": 47
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "shipping_issue",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "shipping_ops"
+        },
+        "expected": {
+          "intent": "shipping_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "shipping_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ticket-07",
+        "raw_response": "{\n  \"intent\": \"payment_issue\",\n  \"urgency\": \"high\",\n  \"needs_clarification\": false,\n  \"route_to\": \"billing_ops\"\n}",
+        "usage": {
+          "input_tokens": 163,
+          "output_tokens": 47
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "payment_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "billing_ops"
+        },
+        "expected": {
+          "intent": "payment_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "billing_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-08",
+        "raw_response": "{\n  \"intent\": \"refund_exchange\",\n  \"urgency\": \"low\",\n  \"needs_clarification\": false,\n  \"route_to\": \"returns_ops\"\n}",
+        "usage": {
+          "input_tokens": 161,
+          "output_tokens": 48
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "refund_exchange",
+          "urgency": "low",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "expected": {
+          "intent": "refund_exchange",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ticket-09",
+        "raw_response": "{\n  \"intent\": \"other\",\n  \"urgency\": \"medium\",\n  \"needs_clarification\": true,\n  \"route_to\": \"human_support\"\n}",
+        "usage": {
+          "input_tokens": 172,
+          "output_tokens": 45
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "expected": {
+          "intent": "other",
+          "urgency": "high",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ticket-10",
+        "raw_response": "{\n  \"intent\": \"other\",\n  \"urgency\": \"medium\",\n  \"needs_clarification\": true,\n  \"route_to\": \"human_support\"\n}",
+        "usage": {
+          "input_tokens": 164,
+          "output_tokens": 45
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "expected": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-11",
+        "raw_response": "{\n  \"intent\": \"other\",\n  \"urgency\": \"medium\",\n  \"needs_clarification\": true,\n  \"route_to\": \"order_ops\"\n}",
+        "usage": {
+          "input_tokens": 163,
+          "output_tokens": 45
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "order_ops"
+        },
+        "expected": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ticket-12",
+        "raw_response": "{\n  \"intent\": \"refund_exchange\",\n  \"urgency\": \"low\",\n  \"needs_clarification\": true,\n  \"route_to\": \"returns_ops\"\n}",
+        "usage": {
+          "input_tokens": 173,
+          "output_tokens": 48
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "refund_exchange",
+          "urgency": "low",
+          "needs_clarification": true,
+          "route_to": "returns_ops"
+        },
+        "expected": {
+          "intent": "refund_exchange",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "returns_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": false
+        }
+      }
+    ]
+  },
+  "v2": {
+    "label": "v2",
+    "model": "claude-sonnet-4-20250514",
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "total_tickets": 12,
+    "parse_success": 12,
+    "parse_rate": "12/12 (100%)",
+    "exact_matches": 7,
+    "exact_match_rate": "7/12 (58%)",
+    "field_matches": {
+      "intent": 12,
+      "urgency": 7,
+      "clarification": 11,
+      "route": 12
+    },
+    "total_input_tokens": 8867,
+    "total_output_tokens": 429,
+    "results": [
+      {
+        "id": "ticket-01",
+        "raw_response": "{\"intent\": \"shipping_issue\", \"urgency\": \"medium\", \"needs_clarification\": false, \"route_to\": \"shipping_ops\"}",
+        "usage": {
+          "input_tokens": 745,
+          "output_tokens": 36
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "shipping_issue",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "shipping_ops"
+        },
+        "expected": {
+          "intent": "shipping_issue",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "shipping_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-02",
+        "raw_response": "{\"intent\": \"payment_issue\", \"urgency\": \"high\", \"needs_clarification\": false, \"route_to\": \"billing_ops\"}",
+        "usage": {
+          "input_tokens": 745,
+          "output_tokens": 36
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "payment_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "billing_ops"
+        },
+        "expected": {
+          "intent": "payment_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "billing_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-03",
+        "raw_response": "{\"intent\": \"order_change\", \"urgency\": \"medium\", \"needs_clarification\": false, \"route_to\": \"order_ops\"}",
+        "usage": {
+          "input_tokens": 745,
+          "output_tokens": 36
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "order_change",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "order_ops"
+        },
+        "expected": {
+          "intent": "order_change",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "order_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-04",
+        "raw_response": "{\"intent\": \"refund_exchange\", \"urgency\": \"low\", \"needs_clarification\": false, \"route_to\": \"returns_ops\"}",
+        "usage": {
+          "input_tokens": 746,
+          "output_tokens": 37
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "refund_exchange",
+          "urgency": "low",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "expected": {
+          "intent": "refund_exchange",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ticket-05",
+        "raw_response": "{\"intent\": \"order_change\", \"urgency\": \"medium\", \"needs_clarification\": false, \"route_to\": \"order_ops\"}",
+        "usage": {
+          "input_tokens": 731,
+          "output_tokens": 36
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "order_change",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "order_ops"
+        },
+        "expected": {
+          "intent": "order_change",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "order_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-06",
+        "raw_response": "{\"intent\": \"shipping_issue\", \"urgency\": \"high\", \"needs_clarification\": false, \"route_to\": \"shipping_ops\"}",
+        "usage": {
+          "input_tokens": 739,
+          "output_tokens": 36
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "shipping_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "shipping_ops"
+        },
+        "expected": {
+          "intent": "shipping_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "shipping_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-07",
+        "raw_response": "{\"intent\": \"payment_issue\", \"urgency\": \"high\", \"needs_clarification\": false, \"route_to\": \"billing_ops\"}",
+        "usage": {
+          "input_tokens": 733,
+          "output_tokens": 36
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "payment_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "billing_ops"
+        },
+        "expected": {
+          "intent": "payment_issue",
+          "urgency": "high",
+          "needs_clarification": false,
+          "route_to": "billing_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-08",
+        "raw_response": "{\"intent\": \"refund_exchange\", \"urgency\": \"low\", \"needs_clarification\": false, \"route_to\": \"returns_ops\"}",
+        "usage": {
+          "input_tokens": 731,
+          "output_tokens": 37
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "refund_exchange",
+          "urgency": "low",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "expected": {
+          "intent": "refund_exchange",
+          "urgency": "medium",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ticket-09",
+        "raw_response": "{\"intent\": \"other\", \"urgency\": \"medium\", \"needs_clarification\": true, \"route_to\": \"human_support\"}",
+        "usage": {
+          "input_tokens": 742,
+          "output_tokens": 34
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "expected": {
+          "intent": "other",
+          "urgency": "high",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ticket-10",
+        "raw_response": "{\"intent\": \"other\", \"urgency\": \"medium\", \"needs_clarification\": true, \"route_to\": \"human_support\"}",
+        "usage": {
+          "input_tokens": 734,
+          "output_tokens": 34
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "expected": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": true,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ticket-11",
+        "raw_response": "{\"intent\": \"other\", \"urgency\": \"low\", \"needs_clarification\": true, \"route_to\": \"human_support\"}",
+        "usage": {
+          "input_tokens": 733,
+          "output_tokens": 34
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "other",
+          "urgency": "low",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "expected": {
+          "intent": "other",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "human_support"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": true,
+          "route_match": true,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ticket-12",
+        "raw_response": "{\"intent\": \"refund_exchange\", \"urgency\": \"low\", \"needs_clarification\": false, \"route_to\": \"returns_ops\"}",
+        "usage": {
+          "input_tokens": 743,
+          "output_tokens": 37
+        },
+        "parse_success": true,
+        "error": null,
+        "predicted": {
+          "intent": "refund_exchange",
+          "urgency": "low",
+          "needs_clarification": false,
+          "route_to": "returns_ops"
+        },
+        "expected": {
+          "intent": "refund_exchange",
+          "urgency": "medium",
+          "needs_clarification": true,
+          "route_to": "returns_ops"
+        },
+        "comparison": {
+          "intent_match": true,
+          "urgency_match": false,
+          "clarification_match": false,
+          "route_match": true,
+          "exact_match": false
+        }
+      }
+    ]
+  }
+}

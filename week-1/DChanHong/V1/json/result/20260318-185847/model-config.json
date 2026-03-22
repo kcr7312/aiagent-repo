@@ -1,0 +1,83 @@
+{
+  "model": "gemini-3-flash-preview",
+  "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+  "generation_defaults": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2000,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "seed": null
+  },
+  "system_prompt": "당신은 전자상거래 고객문의 분류 담당자입니다.\n사용자가 입력한 고객 문의를 읽고, 반드시 아래 기준에 따라 분류하여 정해진 JSON 스키마에 맞게만 응답하세요.\n추가 설명, 자연어 문장, 마크다운 없이 JSON만 반환해야 합니다.\n\n분류 기준:\n\n1. intent\n- order_change: 주문 수정, 취소, 주소 변경, 옵션 변경\n- shipping_issue: 출고, 배송 지연, 배송 누락, 배송 완료 오표시\n- payment_issue: 결제 실패, 중복 결제, 청구 이상\n- refund_exchange: 반품, 환불, 교환, 불량 접수\n- other: 위 카테고리로 단정하기 어렵거나 맥락이 부족한 경우\n\n2. urgency\n- low: 일반 문의, 즉시 장애 아님\n- medium: 처리가 필요하지만 긴급 장애 또는 금전 리스크는 아님\n- high: 결제 이상, 분실/오배송, 고객 불만 고조, 수동 확인이 시급함\n\n3. needs_clarification\n- true: 현재 텍스트만으로 intent 또는 처리 방향을 단정하기 어려움\n- false: 현재 정보만으로 1차 분류 가능함\n\n4. route_to\n- order_ops: 주문/수정 담당\n- shipping_ops: 배송 담당\n- billing_ops: 결제/청구 담당\n- returns_ops: 환불/교환 담당\n- human_support: 맥락 부족, 다부서 이슈, 에스컬레이션 필요\n\n판단 규칙:\n- 문의의 핵심 이슈를 기준으로 intent를 하나만 선택하세요.\n- 문의가 모호하거나 복합적이어서 하나의 intent 또는 처리 부서를 확정하기 어렵다면 intent는 other, needs_clarification은 true로 설정하세요.\n- 결제 이상, 중복 결제, 청구 문제는 payment_issue 및 billing_ops를 우선 고려하세요.\n- 배송 지연, 배송 누락, 배송 완료 오표시 등 배송 상태 문제는 shipping_issue 및 shipping_ops를 우선 고려하세요.\n- 주문 변경, 옵션 변경, 주소 변경, 취소 요청은 order_change 및 order_ops를 우선 고려하세요.\n- 환불, 반품, 교환, 불량 접수는 refund_exchange 및 returns_ops를 우선 고려하세요.\n- 맥락 부족, 다부서 이슈, 에스컬레이션 필요 상황은 human_support로 라우팅하세요.\n- route_to는 intent 및 needs_clarification 판단과 일관되게 선택하세요.\n- 반드시 제공된 스키마의 허용값만 사용하세요.",
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "inquiry_analysis",
+      "schema": {
+        "$defs": {
+          "IntentEnum": {
+            "enum": [
+              "order_change",
+              "shipping_issue",
+              "payment_issue",
+              "refund_exchange",
+              "other"
+            ],
+            "title": "IntentEnum",
+            "type": "string"
+          },
+          "RouteEnum": {
+            "enum": [
+              "order_ops",
+              "shipping_ops",
+              "billing_ops",
+              "returns_ops",
+              "human_support"
+            ],
+            "title": "RouteEnum",
+            "type": "string"
+          },
+          "UrgencyEnum": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "title": "UrgencyEnum",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "intent": {
+            "$ref": "#/$defs/IntentEnum",
+            "description": "고객 문의의 핵심 의도를 하나만 선택한다. 주문 수정, 취소, 주소 변경, 옵션 변경은 order_change. 출고, 배송 지연, 배송 누락, 배송 완료 오표시는 shipping_issue. 결제 실패, 중복 결제, 청구 이상은 payment_issue. 반품, 환불, 교환, 불량 접수는 refund_exchange. 위 항목 중 하나로 명확히 단정하기 어렵거나 맥락이 부족하면 other."
+          },
+          "urgency": {
+            "$ref": "#/$defs/UrgencyEnum",
+            "description": "문의 처리 시급도를 선택한다. 일반 문의이고 즉시 장애가 아니면 low. 처리가 필요하지만 긴급 장애 또는 금전 리스크가 크지 않으면 medium. 결제 이상, 분실/오배송, 배송 완료 오표시, 고객 불만 고조, 수동 확인이 시급한 상황이면 high."
+          },
+          "needs_clarification": {
+            "description": "현재 텍스트만으로 intent 또는 처리 방향을 확정할 수 없으면 true. 현재 정보만으로 1차 분류와 담당 부서 지정이 가능하면 false.",
+            "title": "Needs Clarification",
+            "type": "boolean"
+          },
+          "route_to": {
+            "$ref": "#/$defs/RouteEnum",
+            "description": "선택한 intent와 일관된 담당 부서를 지정한다. order_change는 order_ops, shipping_issue는 shipping_ops, payment_issue는 billing_ops, refund_exchange는 returns_ops가 기본이다. 맥락 부족, 다부서 이슈, 에스컬레이션 필요 시 human_support."
+          }
+        },
+        "required": [
+          "intent",
+          "urgency",
+          "needs_clarification",
+          "route_to"
+        ],
+        "title": "InquiryAnalysis",
+        "type": "object"
+      }
+    }
+  },
+  "reasoning_effort": "low"
+}

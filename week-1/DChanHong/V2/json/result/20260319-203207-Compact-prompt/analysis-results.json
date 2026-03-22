@@ -1,0 +1,194 @@
+[
+  {
+    "id": "ticket-01",
+    "customer_message": "주문한 러닝화가 아직 도착하지 않았어요. 배송이 어디까지 왔는지 확인하고 싶습니다.",
+    "analysis": {
+      "intent": "shipping_issue",
+      "urgency": "medium",
+      "needs_clarification": false,
+      "route_to": "shipping_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 433,
+      "completion_tokens": 27,
+      "total_tokens": 831,
+      "elapsed_ms": 3650.58
+    }
+  },
+  {
+    "id": "ticket-02",
+    "customer_message": "어제 결제했는데 카드 명세를 보니 두 번 결제된 것 같습니다. 빨리 확인 부탁드려요.",
+    "analysis": {
+      "intent": "payment_issue",
+      "urgency": "high",
+      "needs_clarification": false,
+      "route_to": "billing_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 432,
+      "completion_tokens": 27,
+      "total_tokens": 459,
+      "elapsed_ms": 1319.67
+    }
+  },
+  {
+    "id": "ticket-03",
+    "customer_message": "주문한 후드집업 색상을 네이비에서 블랙으로 바꾸고 싶어요. 아직 변경 가능할까요?",
+    "analysis": {
+      "intent": "order_change",
+      "urgency": "medium",
+      "needs_clarification": false,
+      "route_to": "order_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 434,
+      "completion_tokens": 27,
+      "total_tokens": 750,
+      "elapsed_ms": 2484.05
+    }
+  },
+  {
+    "id": "ticket-04",
+    "customer_message": "받아보니 사이즈가 너무 작네요. 같은 제품으로 한 치수 큰 걸로 교환하고 싶습니다.",
+    "analysis": {
+      "intent": "refund_exchange",
+      "urgency": "medium",
+      "needs_clarification": false,
+      "route_to": "returns_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 432,
+      "completion_tokens": 27,
+      "total_tokens": 459,
+      "elapsed_ms": 1513.05
+    }
+  },
+  {
+    "id": "ticket-05",
+    "customer_message": "배송지를 잘못 적었는데 아직 출고 전이면 수정하고 싶습니다.",
+    "analysis": {
+      "intent": "order_change",
+      "urgency": "medium",
+      "needs_clarification": false,
+      "route_to": "order_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 424,
+      "completion_tokens": 27,
+      "total_tokens": 451,
+      "elapsed_ms": 1299.49
+    }
+  },
+  {
+    "id": "ticket-06",
+    "customer_message": "상품은 아직 받지 못했는데 앱에는 배송 완료로 떠 있습니다. 확인해주세요.",
+    "analysis": {
+      "intent": "shipping_issue",
+      "urgency": "high",
+      "needs_clarification": false,
+      "route_to": "shipping_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 427,
+      "completion_tokens": 27,
+      "total_tokens": 454,
+      "elapsed_ms": 1509.94
+    }
+  },
+  {
+    "id": "ticket-07",
+    "customer_message": "결제는 실패했다고 떴는데 카드에서는 금액이 빠져나간 것 같아요.",
+    "analysis": {
+      "intent": "payment_issue",
+      "urgency": "high",
+      "needs_clarification": false,
+      "route_to": "billing_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 427,
+      "completion_tokens": 27,
+      "total_tokens": 661,
+      "elapsed_ms": 2550.63
+    }
+  },
+  {
+    "id": "ticket-08",
+    "customer_message": "포장은 안 뜯었는데 환불이 가능한지 먼저 알고 싶습니다.",
+    "analysis": {
+      "intent": "refund_exchange",
+      "urgency": "low",
+      "needs_clarification": true,
+      "route_to": "returns_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 424,
+      "completion_tokens": 27,
+      "total_tokens": 848,
+      "elapsed_ms": 3241.23
+    }
+  },
+  {
+    "id": "ticket-09",
+    "customer_message": "지난주에 요청드린 건이 아직도 처리되지 않은 것 같아요. 확인 좀 부탁드립니다.",
+    "analysis": {
+      "intent": "other",
+      "urgency": "medium",
+      "needs_clarification": true,
+      "route_to": "human_support"
+    },
+    "response_metadata": {
+      "prompt_tokens": 429,
+      "completion_tokens": 42,
+      "total_tokens": 471,
+      "elapsed_ms": 1376.59
+    }
+  },
+  {
+    "id": "ticket-10",
+    "customer_message": "앱에서 계속 안 되는데 주문 문제인지 결제 문제인지 모르겠습니다.",
+    "analysis": {
+      "intent": "other",
+      "urgency": "medium",
+      "needs_clarification": true,
+      "route_to": "human_support"
+    },
+    "response_metadata": {
+      "prompt_tokens": 424,
+      "completion_tokens": 42,
+      "total_tokens": 466,
+      "elapsed_ms": 1677.46
+    }
+  },
+  {
+    "id": "ticket-11",
+    "customer_message": "선물용으로 포장 가능한가요? 가능하면 이번 주 안에 받고 싶어요.",
+    "analysis": {
+      "intent": "other",
+      "urgency": "low",
+      "needs_clarification": true,
+      "route_to": "human_support"
+    },
+    "response_metadata": {
+      "prompt_tokens": 427,
+      "completion_tokens": 25,
+      "total_tokens": 1121,
+      "elapsed_ms": 4604.57
+    }
+  },
+  {
+    "id": "ticket-12",
+    "customer_message": "사이즈가 안 맞아서 교환할지 환불할지 고민 중인데 어떤 절차로 진행하면 될까요?",
+    "analysis": {
+      "intent": "refund_exchange",
+      "urgency": "low",
+      "needs_clarification": true,
+      "route_to": "returns_ops"
+    },
+    "response_metadata": {
+      "prompt_tokens": 434,
+      "completion_tokens": 33,
+      "total_tokens": 858,
+      "elapsed_ms": 3247.51
+    }
+  }
+]
