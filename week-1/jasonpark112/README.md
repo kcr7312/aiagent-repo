@@ -88,26 +88,60 @@ result_v2.json 참고
 
 ## 4. v1 -> v2 바뀐점
 
-1. urgency 규칙 추가 
-    v1
-    - urgency 기준 없음
-    v2
-    - order_change -> medium
-    - payment_issue -> high 
+### 개요
+v1 프롬프트는 일부 판단 기준이 명확하지 않아 모델이 항목을 추론에 의존해야 했다.  
+v2에서는 ambiguity를 줄이기 위해 규칙을 추가하고, 일부 필드는 추론이 아니라 고정 매핑 방식으로 바꾸었다.
 
-2. route_to를 추론에서 매핑으로 변경
-    v1
-    - intent 보고 route_to를 유추해야 함
-    v2
-    - order_chage -> order_ops
-    - payment_issue -> biling_ops
+### 1. urgency 규칙 추가
 
-3. needs_clarification 기준 명시
-    v1
-    - 언제 true 인지 기준 없음
-    v2
-    - 환불 vs 교환 미정 -> true
-    - 주문 vs 결제 불명확 -> true
+#### v1
+- urgency 판단 기준이 없음
+- 따라서 모델이 문맥만 보고 urgency를 임의로 결정해야 함
+
+#### v2
+- intent별 urgency 기준을 일부 명시함
+- `order_change` → `medium`
+- `payment_issue` → `high`
+
+#### 기대 효과
+- urgency 값의 일관성 향상
+- 동일한 유형의 문의에 대해 더 안정적인 출력 가능
+
+### 2. route_to를 추론에서 매핑으로 변경
+
+#### v1
+- 모델이 intent를 보고 적절한 `route_to`를 추론해야 했음
+- 즉, intent와 route_to의 관계가 프롬프트에 간접적으로만 드러남
+
+#### v2
+- intent와 route_to 관계를 더 명확하게 매핑 형태로 제시함
+- `order_change` → `order_ops`
+- `payment_issue` → `billing_ops`
+
+#### 기대 효과
+- 불필요한 추론 부담 감소
+- route_to 오분류 가능성 감소
+- structured output 안정성 향상
+
+### 3. needs_clarification 기준 명시
+
+#### v1
+- 언제 `needs_clarification = true`로 처리해야 하는지 기준이 없음
+- 모델이 애매한 상황을 일관되게 처리하기 어려움
+
+#### v2
+- clarification이 필요한 대표 상황을 명시함
+- 환불인지 교환인지 불명확한 경우 → `true`
+- 주문 문제인지 결제 문제인지 불명확한 경우 → `true`
+
+#### 기대 효과
+- 애매한 문의를 더 정확하게 감지 가능
+- 잘못된 단정 분류를 줄이고 human review로 넘길 근거 강화
+
+### 정리
+
+v2의 핵심은 모델이 자유롭게 추론하던 부분을 줄이고,  
+명시적인 규칙과 매핑을 추가해 출력의 일관성과 정확도를 높인 것이다.
 
 
 ## 5. 결과 비교 
