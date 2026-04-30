@@ -1,390 +1,130 @@
-# 5주차 실습 과제: RAG 시스템 정량 평가 — Ragas
+Step 1. Ragas 평가 환경 구성
+Ragas 기반 평가를 수행하기 위한 실행 환경을 구성하였다. 필요한 패키지와 API 키를 준비하고, 평가 데이터셋에 `question`, `ground_truth`, `ground_truth_contexts` 필드를 포함하도록 정비하였다. 또한 Basic/Advanced 파이프라인을 대상으로 Ragas 평가를 수행할 수 있도록 평가 스크립트를 수정하였고, 실행 결과가 `basic_rag_run_traces`, `advanced_rag_run_traces`, `basic_ragas_scores`, `advanced_ragas_scores` 형태로 저장되는 것까지 확인하였다. 이후 Step 2~4의 분석은 이 과정에서 생성된 결과 파일을 기반으로 진행하였다.
 
-## 배경
 
-4주차 RAG를 수동 채점으로 평가했지만 한계가 명확합니다.
 
-- 확장성 부족: 문제가 많아지면 채점 불가
-- 진단 불가: 실패 원인이 검색인지 생성인지 구분 안 됨
-- 재현성 낮음: 채점 기준이 매번 달라짐
+2-2. 결과 기록
 
-이번 과제는 4주차 RAG를 재사용해 Ragas 기반 자동·정량 평가 파이프라인을 구축합니다.
+본 절의 정량 비교는 다음 산출물을 기준으로 작성하였다.
 
-1. Golden Dataset 확장: `ground_truth_contexts` 수동 어노테이션
-2. Ragas 자동 평가: 4대 메트릭 + Answer Correctness (Basic/Advanced)
-3. Basic vs Advanced 비교 분석, 실패 케이스 Deep Dive
+전체 평균 비교표: comparison_step2/step2_overall_means.csv
+대표 문항별 비교표: comparison_step2/step2_representative_questions.csv
+Markdown 정리본: comparison_step2/step2_tables.md
 
-### 이전 주차와의 연결
+이들 파일을 바탕으로 Basic(Vector Search)와 Advanced(Hybrid Search)의 Ragas 평가 결과를 비교하였다. 전체 평균 기준으로 Advanced는 Context Recall과 Answer Correctness에서 상승을 보였으나, Context Precision과 Faithfulness는 소폭 하락하였고, Answer Relevancy는 크게 하락하였다. 이러한 결과는 Hybrid 검색이 더 많은 근거를 회수하는 데에는 유리하지만, 질문과 직접적으로 관련된 답변을 안정적으로 생성하는 측면에서는 추가 보완이 필요함을 보여준다.
 
-| 주차 | 이번 주와의 연결 |
-|------|---------------|
-| 2주차 | 실습 심화 C에서 2주차 정답률과 Ragas Ans Correctness 비교 |
-| 3주차 | `evidence_text` → `ground_truth_contexts` (문자열 → 리스트) |
-| 4주차 | 파이프라인·Golden Dataset 재사용, `expected_answer`는 `ground_truth`의 출발점 |
+2-3. 4주차 수동/규칙 판정과 5주차 Ragas 비교
 
-## 데이터
+본 절의 비교는 다음 산출물을 기준으로 작성하였다.
 
-- 4주차와 동일한 의료급여 PDF (`data/2025 알기 쉬운 의료급여제도.pdf`, `data/2026 알기 쉬운 의료급여제도.pdf`)
-- 4주차 벡터 저장소(`source_year` 메타데이터 포함) 재사용 권장
-- 성능 변별이 어려우면 자료 추가: https://www.hira.or.kr/ra/ebook/list.do?pgmid=HIRAA030402000000
+4주차 vs 5주차 비교표: comparison_step2/step2_manual_vs_ragas.csv
+요약 정보: comparison_step2/step2_summary.json
+Markdown 정리본: comparison_step2/step2_tables.md
 
-### Golden Dataset 확장
+비교 결과, baseline vs basic은 20문항 중 12문항 일치, hybrid vs advanced는 20문항 중 10문항 일치하였다. 이는 Ragas의 Answer Correctness가 기존 규칙 기반 판정과 일부 일치하는 경향을 보이지만, 완전히 동일한 기준으로 동작하지는 않음을 의미한다. 즉, 5주차 자동 평가는 4주차 판정을 대체하는 것이 아니라, 기존 평가를 보완하는 추가 정량 지표로 해석하는 것이 적절하다.
 
-4주차 Dataset(20문제)에 두 필드를 추가합니다.
 
-| 필드 | 의미 | 준비 방법 | 이전 주차 대응 |
-|------|------|---------|------------|
-| `ground_truth` | 기대 답변 | `expected_answer`를 완전한 문장으로 정제 | 4주차 `expected_answer` 확장 |
-| `ground_truth_contexts` | 정답 근거 청크 (리스트) | PDF에서 근거 문단 발췌 | 3주차 `evidence_text` (문자열 → 리스트) |
+3-1. 다차원 비교
+Advanced가 개선한 지표
+  Context Recall: `0.5417 → 0.7895`
+  Answer Correctness: `0.3871 → 0.4965`
 
-#### `ground_truth`는 완전한 문장으로
+Advanced가 악화한 지표
+  Context Precision: `0.3667 → 0.3500`
+  Faithfulness: `0.6892 → 0.6826`
+  Answer Relevancy: `0.7660 → 0.3067`
 
-Ragas Answer Correctness는 의미 유사도(임베딩) + 사실 일치도(LLM)의 가중 평균입니다. RAG 답변이 완전한 문장이므로 `ground_truth`도 같은 형태여야 유사도가 제대로 측정됩니다.
+해석
+  Advanced는 근거를 더 많이 찾는 데는 효과적이었다.
+  하지만 질문과 직접 맞는 답변을 안정적으로 생성하는 데는 실패한 문항이 늘었다.
+  따라서 이번 결과는 “Advanced가 전반적으로 우수”가 아니라, Recall 향상과 Relevancy 저하의 trade-off로 보는 게 맞다.
 
-| 형태 | 예시 | 체감 |
-|------|------|------|
-| 나쁨 | `"1,000원"` | 유사도 낮아 저평가 |
-| 좋음 | `"2025년 의료급여 1종 수급권자의 외래 본인부담금은 1,000원입니다."` | 유사도·사실 일치도 모두 높음 |
-| 장황 | 2~3줄 장문 | RAG 답변보다 길어져 유사도 하락 |
 
-> 정제 원칙(예: "년도 + 대상 + 조건 + 값 순으로 한 문장")을 README.md에 기록.
+3-2. 년도 혼동 재진단
+`Context Recall`이 높아져도 `Answer Correctness`가 같이 올라가지 않은 문항이 있었다.
+예:
+  q09: basic correctness `0.6055`, advanced `0.0622`
+  q10: basic correctness `0.6999`, advanced `0.0475` 
 
-#### 확장 Dataset 예시 (JSONL)
+반대로 advanced가 더 나아진 문항도 있었다.
+  q11: basic `0.2157`, advanced `0.7216`
+  q12: basic `N/A`, advanced `0.8637` 
 
-```jsonl
-{"question": "2025년 의료급여 1종 수급권자의 외래 본인부담금은?", "ground_truth": "2025년 의료급여 1종 수급권자의 외래 본인부담금은 1,000원입니다.", "ground_truth_contexts": ["1종 수급권자 외래 본인부담금은 1,000원이며..."], "difficulty": "easy", "source_year": "2025"}
-{"question": "2025년 대비 2026년에 달라진 본인부담률은?", "ground_truth": "2026년에는 외래 본인부담금이 1,000원에서 1,500원으로 인상되었습니다.", "ground_truth_contexts": ["2025년 본인부담금 1,000원...", "2026년 본인부담금 1,500원..."], "difficulty": "cross-year", "source_year": "2025+2026"}
-```
+해석
+  연도 관련 문항에서는 문서를 많이 찾는 것만으로 충분하지 않았다.
+  실제 답변에 올바른 연도 정보를 반영했는지가 더 중요했다.
+  따라서 년도 혼동 진단에는 `Context Recall`보다 `Answer Correctness`가 더 직접적인 지표였다. 
 
-> 파일에는 `question` / `ground_truth` / `ground_truth_contexts`로 저장. Ragas v0.2+ 입력 시 `user_input` / `reference` / `reference_contexts`로 매핑 (Step 1-2).
 
-#### 주의사항
+3-3. 인사이트 정리
+4주차 결론의 재평가
+  “Advanced가 더 낫다”는 결론은 부분적으로만 맞았다.
+  Recall과 Correctness는 개선됐지만, Relevancy와 일부 Faithfulness는 악화됐다.
 
-- `ground_truth_contexts`는 리스트 (cross-year 문항은 두 년도 청크 포함)
-- 벡터 저장소 청크와 일치할 필요 없음. PDF 원본 문단을 의미 단위로 발췌
-- 최소 10문제, 권장 15문제. 난이도별(`easy`/`medium`/`hard`/`cross-year`) 고른 분포
-- 파일명: `golden_dataset_v2.jsonl`
+4주차 판정과의 일치도
+  baseline vs basic: `12/20` 일치
+  hybrid vs advanced: `10/20` 일치
 
-## 실습 구조
+추가 해석
+  이번 결과는 검색 구조 차이만이 아니라, 사용한 LLM 성능 등급의 영향도 포함했을 가능성이 있다.
+  생성에 사용한 경량 모델(Gemini 3.1 Flash Lite 계열)은 비용 절감에는 유리하지만, 연도 구분·조건 해석이 중요한 문항에서 정밀도가 떨어졌을 가능성이 있다.
+  따라서 이번 결과는 “Advanced 검색 구조 자체의 성능”과 “경량 생성 모델의 한계”가 함께 반영된 결과로 보는 것이 타당하다.
 
-### Step 1: Ragas 자동 평가 환경 구축
+최종 결론
+  이번 프로젝트는 Advanced의 장점과 한계를 동시에 드러낸 결과가 나왔다.
+  즉, 검색 커버리지는 좋아졌지만, 답변 품질은 아직 안정적이지 않았다.
+  이후 개선 우선순위는 `Answer Relevancy`, `Faithfulness`, 그리고 연도 혼동을 직접 잡는 보조 지표 설계다.
 
-Ragas 0.4.x 기준. v0.2에서 스키마가 바뀌었으니 `pip show ragas`로 0.2 이상 확인. `question`/`answer`/`contexts` 예시는 대부분 v0.1이라 최신 버전과 호환되지 않음.
 
-#### 1-1. 설치 및 API 키
 
-Ragas 0.2 이상과 LangChain 연동 패키지(Anthropic, OpenAI)를 설치하고 `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` 환경변수를 설정합니다.
 
-평가용 LLM / 임베딩 선택:
+좋아. 제출용으로 바로 넣을 수 있게 **짧고 단정하게** 정리해줄게.
 
-- 생성 LLM이 GPT-4o면 평가용은 Claude Sonnet 계열 권장
-- 임베딩: OpenAI `text-embedding-3-small` 또는 4주차 한국어 임베딩 재사용
-- Ragas 내부 프롬프트는 기본 영어 → `adapt_prompts(language="korean", llm=evaluator_llm)`로 한국어 전환
+4-1. 문항 선별
 
-#### 1-2. 평가 데이터 준비 (v0.2+ 스키마)
+| 케이스    | 질문 ID | 선정 이유                                                                                                                      |
+| ------ | ----- | -------------------------------------------------------------------------------------------------------------------------- |
+| Case A | q09   | Basic의 `Answer Correctness`는 `0.6055`였으나, Advanced는 `0.0622`로 크게 하락하였다. Advanced 적용 시 오히려 성능이 악화된 대표 사례로 판단하였다.            |
+| Case B | q11   | Basic의 `Answer Correctness`는 `0.2157`, Advanced는 `0.7216`으로 크게 상승하였다. 같은 연도 조건 문항에서 검색 결과 차이가 답변 품질 차이로 직접 이어진 사례로 판단하였다.  |
 
-각 질문에 대해 Basic/Advanced RAG를 실행하여 `retrieved_contexts`(검색 청크)와 `response`(답변)를 수집. `SingleTurnSample` + `EvaluationDataset`으로 구성합니다.
 
-| JSONL 필드 | `SingleTurnSample` 필드 |
-|-----------|----------------------|
-| `question` | `user_input` |
-| (RAG 실행 결과) | `response` |
-| (RAG 실행 결과) | `retrieved_contexts` |
-| `ground_truth` | `reference` |
-| `ground_truth_contexts` | `reference_contexts` |
+4-2. 케이스별 분석
+Case A. q09
 
-JSONL을 한 줄씩 읽어 RAG에 질문을 넣고, 파일 필드와 실행 결과를 매핑 표에 따라 `SingleTurnSample`로 묶어 파이프라인별 `EvaluationDataset`을 만듭니다.
+질문**: 2025년 의료급여에서 2종 수급권자의 제2차 또는 제3차의료급여기관 외래 본인부담률은 얼마인가?
+참고 정답**: 15%
+검색된 청크 — Basic**: 일반 본인부담률 표(p.9) 포함
+검색된 청크 — Advanced**: 아동 5%, 틀니 15%, 의뢰서 없이 이용 시 100/100 등 주변 규정이 함께 검색됨
+생성된 답변**
+  * Basic: 15%로 답변
+  * Advanced: 일반 수치가 문맥에 없다고 답변
 
-> RAG의 `invoke()` 반환 형태는 구현마다 다름. "검색 청크 리스트"와 "답변 문자열"을 분리해 꺼낼 수 있어야 함.
-
-#### 1-3. 평가용 LLM / 임베딩 래핑
-
-평가용 LLM(ChatAnthropic `claude-sonnet-4-5`, temperature=0)과 임베딩(`text-embedding-3-small`)을 `LangchainLLMWrapper` / `LangchainEmbeddingsWrapper`로 래핑. 메트릭 다섯 개(`ContextRecall`, `LLMContextPrecisionWithReference`, `Faithfulness`, `ResponseRelevancy`, `AnswerCorrectness`) 인스턴스를 만들고 `adapt_prompts(language="korean", llm=evaluator_llm)` → `set_prompts(**adapted)`로 한국어 프롬프트 적용.
-
-> 첫 실행 시 번역 결과를 로그로 확인.
-
-### Step 2: Ragas 4대 메트릭 + Answer Correctness 측정
-
-#### 2-1. 메트릭 실행
-
-`evaluate()`에 `dataset`, `metrics`, `llm`, `embeddings` 주입 → Basic/Advanced 각각 실행. `to_pandas()` 변환 후 `basic_ragas_scores.csv`, `advanced_ragas_scores.csv`로 저장.
-
-메트릭 선택 이유:
-
-- `ContextRecall()`: `reference` 기준 검색 재현율
-- `LLMContextPrecisionWithReference()`: `reference` 있는 경우 표준 Precision (v0.2+ 권장)
-- `Faithfulness()`: 환각 체크 (`reference` 불필요)
-- `ResponseRelevancy()`: 구 `answer_relevancy`
-- `AnswerCorrectness()`: End-to-end 정확도
-
-> 소문자 함수형은 deprecation 대상. 클래스형 사용.
-
-비용: 20문항 × 5메트릭 × 2파이프라인 = 200~300회 LLM 호출. 대략 3~8 USD. 파일럿 5문항으로 먼저 검증 권장.
-
-#### 2-2. 결과 기록
-
-전체 평균
-
-| 메트릭 | Basic | Advanced | 변화 |
-|--------|------|---------|-----|
-| Context Recall | | | |
-| Context Precision | | | |
-| Faithfulness | | | |
-| Answer Relevancy | | | |
-| Answer Correctness | | | |
-
-대표 문항별
-
-| 질문 ID | 난이도 | source_year | Ctx Recall (B/A) | Ctx Precision (B/A) | Faithfulness (B/A) | Ans Relevancy (B/A) | Ans Correctness (B/A) |
-|---------|--------|------------|-----------------|-------------------|------------------|-------------------|---------------------|
-| q01 | easy | 2025 | / | / | / | / | / |
-| q02 | medium | 2026 | / | / | / | / | / |
-| q03 | cross-year | 2025+2026 | / | / | / | / | / |
-| ... | | | | | | | |
-
-> B/A = Basic/Advanced.
-
-#### 2-3. 4주차 수동 채점 vs Ragas 비교
-
-| 질문 ID | 4주차 판정 | Ragas Ans Correctness | 일치 | 불일치 원인 |
-|---------|-----------|----------------------|-----|-----------|
-| q01 | 정답 | 0.87 | 일치 | |
-| q02 | 오답 | 0.42 | 일치 | |
-| q03 | 정답 | 0.58 | 불일치 | 표현 차이 |
-| ... | | | | |
-
-### Step 3: Basic RAG vs Advanced RAG 비교 분석
-
-#### 3-1. 다차원 비교
-
-| 구분 | Ragas 5메트릭에서 개선/악화된 차원 |
-|------|-----------------------------|
-| 개선 | |
-| 악화 | |
-
-#### 3-2. 년도 혼동 재진단
-
-- 년도 혼동 문항에서 어느 메트릭이 가장 민감한가?
-- Ragas 기본 메트릭으로 충분한가, Year Accuracy 커스텀 메트릭이 필요한가? (→ 심화 A)
-
-#### 3-3. 인사이트 정리
-
-2~3문단 작성:
-
-- 4주차 "Advanced가 낫다" 결론은 어디까지 유효한가?
-- 도메인 임계값(예: Faithfulness ≥ 0.9)으로 보면 프로덕션 가능한가?
-- 개선 우선순위 메트릭과 근거는?
-
-### Step 4: 실패 케이스 Deep Dive
-
-메트릭 점수 뒤의 실제 현상 분석. 문항 2개 필수 (Case C 선택).
-
-#### 4-1. 문항 선별
-
-| 케이스 | 선별 기준 | 필수 | 예시 |
-|-------|----------|-----|------|
-| Case A | Advanced가 Basic보다 악화된 문항 | 필수 | Re-ranker가 정답 청크를 뒤로 미룸 |
-| Case B | 년도 혼동 발생 (Context 맞는데 답변 년도 틀림) | 필수 | 2025/2026 청크 혼합 |
-| Case C | Ragas 메트릭 간 충돌 (예: Faithfulness 높은데 Answer Correctness 낮음) | 선택 | 환각 없지만 ground_truth와 의미 차이 |
-
-> Case A가 없으면 "Basic·Advanced 모두 오답인 가장 어려운 문항"으로 대체. 선별 기준 명시.
-
-#### 4-2. 케이스별 분석 양식
-
-```
-### Case [A/B/C]: q[XX]
-
-질문: {question}
-참고 정답: {ground_truth}
-
-[검색된 청크 — Basic RAG]
-1. (청크 전문, source_year 포함)
-2. ...
-
-[검색된 청크 — Advanced RAG]
-1. ...
-2. ...
-
-[생성된 답변]
-- Basic: {답변}
-- Advanced: {답변}
-
-[메트릭 점수는 Step 2 결과표에서 해당 행 인용]
-
-[원인 분석]
-- 검색/생성/둘 다 중 어디가 문제?
-- 어느 메트릭이 가장 잘 드러냈나?
-- 조치 (청킹/프롬프트/Re-ranker/메타데이터 필터)?
-```
-
-#### 4-3. 공통 교훈
-
-3~5개 bullet:
-
-- 어떤 질문 유형에서 메트릭이 실제 품질과 어긋났나
-- Ragas가 놓치는 실패 유형
-- 4주차 수동과 5주차 자동 중 어느 쪽이 더 엄격/관대한가
-
----
-
-## 선택 심화 과제
-
-필수 아님. 하나 이상 수행 시 제출.
-
-### 심화 A: Custom Metric — YearAccuracy
-
-Ragas 기본 메트릭은 년도 혼동을 직접 포착하지 못함. `YearAccuracy` 커스텀 메트릭을 Ragas에 통합.
-
-요구사항
-
-- `MetricWithLLM` 등 베이스 클래스 상속
-- 입력: `question`, `response`, `source_year`
-- 출력: 0~1 점수
-- `evaluate()`에서 기존 메트릭과 함께 사용 가능
-- Basic/Advanced 측정 후 년도 혼동 진단 기여도 평가
-
-참고: [Ragas — Write your own Metric](https://docs.ragas.io/en/stable/howtos/customizations/metrics/write_your_own_metric/)
-
-### 심화 B: 평가 → 개선 → 재평가
-
-Step 3-3의 "개선 우선순위 메트릭"을 한 번 개선하고 재평가.
-
-절차
-
-1. 개선할 메트릭 1개 선택 (예: Faithfulness)
-2. 가설 수립 (예: "컨텍스트 외 정보 금지 지시 강화 → Faithfulness 0.72 → 0.85")
-3. 변경 적용 (프롬프트·청킹·Re-ranker 중 하나만, 범위 최소)
-4. Ragas 재실행
-5. 변경 전/후 전체 메트릭 표 비교
-
-| 메트릭 | 변경 전 | 변경 후 | 변화 |
-|--------|--------|--------|------|
-| Context Recall | | | |
-| Context Precision | | | |
-| Faithfulness | | | |
-| Answer Relevancy | | | |
-| Answer Correctness | | | |
-
-- 가설 vs 결과 일치 여부
-- 부작용 발생 시 원인
-
-### 심화 C: 2주차~5주차 누적 개선 비교
-
-"프롬프트만 → RAG → Advanced RAG → 평가 체계" 누적 가치 시각화.
-
-조건
-
-- 2주차 2024 PDF, 4/5주차 2025/2026 PDF라 정답값이 바뀔 수 있음. 교집합 문항 식별 선행
-- 교집합 3문항 미만이면 평균 수준 비교로 대체 (같은 문항 비교가 아님을 명시)
-
-| 방식 | 시점 | 비교 축 |
-|------|-----|--------|
-| 2주차 Zero-shot | 2주차 | 사람 정답률 |
-| 2주차 최고 (CoT/Self-Consistency) | 2주차 | 사람 정답률 |
-| 4주차 Basic RAG | 4주차 | 사람 정답률 |
-| 4주차 Advanced RAG | 4주차 | 사람 정답률 |
-| 5주차 Advanced RAG | 이번 주 | Ragas Ans Correctness |
-
-- 척도 차이 주석 명시
-- 누적 개선 곡선 bullet/표, 가장 큰 도약 구간 해석
-
-### 심화 D: 건강보험심사평가원 데이터 확장 평가
-
-4주차에서 쓴 의료급여 PDF 외에 건강보험심사평가원 e-book(https://www.hira.or.kr/ra/ebook/list.do?pgmid=HIRAA030402000000)에서 관련 자료를 추가 인덱싱하고 Golden Dataset을 확장해 평가 범위를 넓힙니다.
-
-요구사항
-
-- 건강보험심사평가원 e-book에서 1~2개 PDF 선택 (의료급여·건강보험 관련 주제)
-- 4주차 벡터 저장소에 추가 인덱싱 (`source_document` 등 메타데이터 포함)
-- Golden Dataset에 새 자료 기반 문제 5개 이상 추가 (`ground_truth`, `ground_truth_contexts` 포함)
-- 확장 전/후 Ragas 5메트릭 비교
-  - Context Recall/Precision 변화
-  - Faithfulness·Answer Correctness 유지 여부
-  - 자료 간 혼동·충돌 발생 여부
-
-기록
-
-- 추가한 자료 목록과 선택 이유
-- 확장 전/후 메트릭 비교 표
-- 새로 발견된 실패 유형 (있다면)
-
-## 구현 요구사항
-
-### 필수
-
-1. Step 1~4 모두 구현 및 결과 기록
-2. `golden_dataset_v2.jsonl` 작성 (`ground_truth_contexts` 포함, 최소 10문제 / 권장 15문제)
-3. Ragas 5개 메트릭 측정 (Basic/Advanced)
-4. 4주차 수동 채점과 Ragas Ans Correctness 일치도 분석
-5. Basic vs Advanced 비교, 년도 혼동 재진단, 인사이트 정리
-6. 실패 케이스 2~3건 분석 + 공통 교훈
-
-### 권장
-
-- 4주차 파이프라인 재사용
-- 평가용 LLM: GPT-4o 또는 Claude Sonnet 이상 (한국어 품질)
-- 평가용 LLM은 생성용과 다른 모델 패밀리
-
-### 선택 심화
-
-- 심화 A: YearAccuracy Custom Metric
-- 심화 B: 평가 → 개선 → 재평가
-- 심화 C: 2주차~5주차 누적 비교
-- 심화 D: 건강보험심사평가원 데이터 확장 평가
-
-### 금지
-
-- ChatGPT/Claude 웹 UI 사용
-- `ground_truth_contexts`를 LLM으로 자동 생성 (수동 어노테이션이 학습 포인트)
-
-## 제출물
-
-- 브랜치 `week5/<GithubID>` 생성 후 PR
-
-필수 파일 (`week-5/<GithubID>/`):
-- `golden_dataset_v2.jsonl`
-- `README.md` (이론 + 실습 결과)
-- 관련 코드 (Ragas 평가 스크립트)
-- 평가 결과 로그 (JSON/CSV)
-
-## README.md 필수 포함 항목
-
-1. 프레임워크·모델(생성용 LLM, 평가용 LLM, 임베딩)·Ragas 버전·실행 환경
-2. Golden Dataset 확장 전략 (`ground_truth_contexts` 발췌 원칙, `ground_truth` 정제 원칙, cross-year 처리)
-3. Ragas 평가 파이프라인 (평가용 LLM 선택 이유, 데이터셋 구성)
-4. Step 2 결과 (5메트릭 표, 4주차 수동 채점 비교)
-5. Step 3 결과 (Basic vs Advanced 비교, 년도 혼동 재진단, 인사이트)
-6. Step 4 결과 (실패 케이스, 공통 교훈)
-7. 이론 과제 답변
-8. 가설 vs 실제 결과 비교
-9. (선택) 심화 과제 결과
-
-## 참고 자료
-
-Ragas
-- [Ragas 공식 문서](https://docs.ragas.io/)
-- [Ragas GitHub](https://github.com/explodinggradients/ragas)
-- [Context Recall](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_recall/)
-- [Context Precision](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_precision/)
-- [Faithfulness](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/)
-- [Answer Relevancy](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/answer_relevance/)
-- [Answer Correctness](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/answer_correctness/)
-- [RAGAS Paper — Es et al. 2023](https://arxiv.org/abs/2309.15217)
-
-평가 프레임워크
-- [DeepEval](https://docs.confident-ai.com/)
-- [Promptfoo](https://www.promptfoo.dev/docs/intro/)
-- [LangSmith Evaluation](https://docs.smith.langchain.com/evaluation)
-
-## 힌트
-
-- Ragas 첫 사용이라면 공식 Quickstart(https://docs.ragas.io/en/stable/getstarted/)로 스키마를 익힌 뒤 시작. 블로그 튜토리얼 대부분이 v0.1 기준이라 최신 버전과 맞지 않음.
-- 4주차 RAG 체인이 답변 문자열만 반환한다면 `retrieved_contexts`도 함께 꺼내도록 수정 필요. LangChain LCEL이면 `RunnablePassthrough.assign()`으로 중간 검색 결과를 병행 전달. AI 도움으로 10~20줄 수준.
-- `ground_truth_contexts` 품질이 Context Recall 신뢰도를 결정. PDF에서 2~5문장 단위로 발췌.
-- 파일럿 5~10문항으로 스키마·비용 먼저 검증.
-- `pip show ragas`로 버전 확인 (v0.1/v0.2+ API 차이).
-- Faithfulness·Answer Relevancy 높은데 Answer Correctness만 낮으면 `ground_truth` 품질 의심.
-- Context Recall 높고 Answer Correctness 낮음 → 생성 단계. Faithfulness 낮으면 환각, 높으면 프롬프트/포맷 문제.
-- Context Precision은 순서 민감. Recall과 함께 봐야 "검색이 뭘 못했나" 드러남.
-- 년도 혼동은 Ragas 기본 메트릭으로 직접 잡히지 않음 (Year Accuracy 커스텀 메트릭이 필요한 이유, 심화 A 참고).
-- Step 1~2로 숫자 확보 후 Step 3~4 진행. 심화는 마지막에.
+메트릭**
+  * Basic: Recall `1.0`, Precision `0.3333`, Correctness `0.6055`
+  * Advanced: Recall `0.0`, Precision `0.0`, Faithfulness `0.75`, Correctness `0.0622` 
+
+원인 분석**: Advanced는 관련은 있으나 질문 핵심과 직접 대응하지 않는 청크가 섞이면서 정답 청크를 놓쳤다. 즉 검색 단계의 노이즈 증가가 생성 오답으로 이어진 사례였다.
+조치**: 일반 규정 청크 우선 retrieval, 예외 규정/특정 급여 항목 청크 분리, 프롬프트에 일반 규정 우선 답변 제약 추가
+
+Case B. q11
+
+질문**: 2025년 의료급여에서 15세 이하 아동이 의료급여의뢰서 없이 제2차의료급여기관에서 진료받을 수 있는가?
+참고 정답**: 가능함. 15세 이하 아동은 단계별 진료 예외 대상임
+검색된 청크 — Basic**: 아동 관련 주변 규정, 의뢰서 없이 이용 시 100/100 규정
+검색된 청크 — Advanced**: “15세 이하 아동은 의뢰서 없이 제2차 의료급여기관 적용 가능” 청크 직접 회수
+생성된 답변**
+  * Basic: 예외 규정이 없다고 답변
+  * Advanced: 예외 대상이므로 가능하다고 답변
+
+메트릭**
+  * Basic: Recall `0.0`, Faithfulness `0.75`, Correctness `0.2157`
+  * Advanced: Recall `1.0`, Precision `1.0`, Faithfulness `1.0`, Correctness `0.7216` 
+
+원인 분석**: 핵심 원인은 검색 차이였다. Basic은 정답 청크를 찾지 못했고, Advanced는 정답 청크를 직접 회수하여 생성 단계까지 올바르게 연결하였다.
+조치**: “15세 이하 / 예외 / 의뢰서 없이 / 제2차” 키워드 가중치 강화, 예외 규정 전용 태그 추가
+
+4-3. 공통 교훈
+* Advanced는 항상 우수하지 않았다. q09처럼 검색 범위가 넓어지면서 오히려 질문과 직접 관련 없는 청크가 섞여 성능이 악화될 수 있었다. 
+* 반대로 q11처럼 정답 청크를 직접 회수한 경우에는 Advanced가 Basic보다 분명한 개선을 보였다. 
+* 따라서 이번 결과는 Advanced가 **검색 커버리지를 넓히는 데는 강점**이 있지만, **질문 중심의 정밀한 청크 선택이 동반되지 않으면 오히려 오답 가능성이 커질 수 있음**을 보여준다.
+* 사견으로는, Basic은 보수적이지만 질문 핵심 청크만 잡으면 안정적이고, Advanced는 잠재력이 더 크지만 청크 정제와 예외 규정 처리까지 함께 설계되지 않으면 성능 변동성이 더 큰 구조라고 판단된다.
