@@ -1,0 +1,52 @@
+{
+  "basic": {
+    "pipeline": "basic",
+    "total": 20,
+    "metric_means": {
+      "context_recall": 0.5416666666666666,
+      "llm_context_precision_with_reference": 0.36666666663166664,
+      "faithfulness": 0.6892156862745098,
+      "answer_correctness": 0.38711633047584504
+    },
+    "csv_path": "C:\\Users\\kcr\\Downloads\\ai agent\\aiagent-repo-main\\5week\\outputs_ragas\\basic_ragas_scores.csv",
+    "jsonl_path": "C:\\Users\\kcr\\Downloads\\ai agent\\aiagent-repo-main\\5week\\outputs_ragas\\basic_ragas_scores.jsonl"
+  },
+  "advanced": {
+    "pipeline": "advanced",
+    "total": 20,
+    "metric_means": {
+      "context_recall": 0.7894736842105263,
+      "llm_context_precision_with_reference": 0.349999999965,
+      "faithfulness": 0.6826481599208871,
+      "answer_correctness": 0.4965195992517591
+    },
+    "csv_path": "C:\\Users\\kcr\\Downloads\\ai agent\\aiagent-repo-main\\5week\\outputs_ragas\\advanced_ragas_scores.csv",
+    "jsonl_path": "C:\\Users\\kcr\\Downloads\\ai agent\\aiagent-repo-main\\5week\\outputs_ragas\\advanced_ragas_scores.jsonl"
+  },
+  "comparison": [
+    {
+      "metric": "answer_correctness",
+      "basic": 0.38711633047584504,
+      "advanced": 0.4965195992517591,
+      "delta": 0.109403
+    },
+    {
+      "metric": "context_recall",
+      "basic": 0.5416666666666666,
+      "advanced": 0.7894736842105263,
+      "delta": 0.247807
+    },
+    {
+      "metric": "faithfulness",
+      "basic": 0.6892156862745098,
+      "advanced": 0.6826481599208871,
+      "delta": -0.006568
+    },
+    {
+      "metric": "llm_context_precision_with_reference",
+      "basic": 0.36666666663166664,
+      "advanced": 0.349999999965,
+      "delta": -0.016667
+    }
+  ]
+}

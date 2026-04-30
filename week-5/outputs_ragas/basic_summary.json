@@ -1,0 +1,12 @@
+{
+  "pipeline": "basic",
+  "total": 20,
+  "metric_means": {
+    "context_recall": 0.5416666666666666,
+    "llm_context_precision_with_reference": 0.36666666663166664,
+    "faithfulness": 0.6892156862745098,
+    "answer_correctness": 0.38711633047584504
+  },
+  "csv_path": "C:\\Users\\kcr\\Downloads\\ai agent\\aiagent-repo-main\\5week\\outputs_ragas\\basic_ragas_scores.csv",
+  "jsonl_path": "C:\\Users\\kcr\\Downloads\\ai agent\\aiagent-repo-main\\5week\\outputs_ragas\\basic_ragas_scores.jsonl"
+}

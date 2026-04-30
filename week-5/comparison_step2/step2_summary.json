@@ -1,0 +1,40 @@
+{
+  "overall_means": [
+    {
+      "metric": "Context Recall",
+      "basic": 0.5417,
+      "advanced": 0.7895,
+      "delta": 0.2478
+    },
+    {
+      "metric": "Context Precision",
+      "basic": 0.3667,
+      "advanced": 0.35,
+      "delta": -0.0167
+    },
+    {
+      "metric": "Faithfulness",
+      "basic": 0.6892,
+      "advanced": 0.6826,
+      "delta": -0.0066
+    },
+    {
+      "metric": "Answer Relevancy",
+      "basic": 0.766,
+      "advanced": 0.3067,
+      "delta": -0.4593
+    },
+    {
+      "metric": "Answer Correctness",
+      "basic": 0.3871,
+      "advanced": 0.4965,
+      "delta": 0.1094
+    }
+  ],
+  "representative_question_count": 20,
+  "manual_vs_ragas_count": 20,
+  "match_summary": {
+    "baseline_vs_basic_일치": 12,
+    "hybrid_vs_advanced_일치": 10
+  }
+}
