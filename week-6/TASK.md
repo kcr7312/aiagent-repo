@@ -793,10 +793,3 @@ no,time,timestamp,src_ip,dst_ip,src_port,dst_port,protocol,length,info
 
    * Metadata Agent, Stream Filter Agent, Payload Decode Agent, Decode Strategy Agent, Threat Detection Agent로 분리 지점을 제시했다.
 
-```
-
-이 버전은 제출용으로 꽤 안정적이야. 핵심은 **“위협탐지 Agent”가 아니라 “초기 payload 디코딩 전략 Agent”**로 좁혔다는 점이고, 그래서 과하지 않게 Agent 조건도 살렸어.
-::contentReference[oaicite:1]{index=1}
-```
-
-[1]: https://github.com/bjc1102/ai-agent-repo/blob/main/week-6/TASK.md "ai-agent-repo/week-6/TASK.md at main · bjc1102/ai-agent-repo · GitHub"
