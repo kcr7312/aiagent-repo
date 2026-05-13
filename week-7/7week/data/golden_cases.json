@@ -1,0 +1,353 @@
+[
+  {
+    "case_id": "basic_auth_base64_001",
+    "case_type": "decode_success",
+    "user_query": "HTTP Authorization 헤더에서 Base64 인코딩된 값을 찾아 디코딩해줘.",
+    "input_files": {
+      "packets": "data/basic_auth_base64_packets.csv",
+      "segments": "data/segments/basic_auth_base64_segments.json",
+      "decoded": "data/decoded/basic_auth_base64_decoded.json",
+      "strategy": "data/strategy/basic_auth_base64_strategy.done.json"
+    },
+    "expected_tool_sequence": [
+      "json_segmenter",
+      "encoding_decode_tool",
+      "strategy_precheck"
+    ],
+    "expected_agent_route": null,
+    "expected_llm_decision": null,
+    "expected_agent_tools": [],
+    "expected_status": "sufficient_within_scope",
+    "expected_final_file_status": "done",
+    "expected_failure_type": null,
+    "expected_final_decoded_payloads": [],
+    "expected_final_fields": [
+      "decision",
+      "needs_llm_review",
+      "completion_status",
+      "required_next_action",
+      "decoded_candidates_preview",
+      "counts"
+    ],
+    "notes": "정상 Basic Auth base64 디코딩 케이스. failed/residue/excluded stream이 없으면 LLM Agent 검토 없이 done 처리된다."
+  },
+  {
+    "case_id": "log4shell_ldap_basic_auth_ev1_001",
+    "case_type": "sensitive_decoded",
+    "user_query": "HTTP Basic Auth 헤더에 포함된 Base64 값을 디코딩하고 Log4Shell 위협 여부를 판단해줘.",
+    "input_files": {
+      "packets": "data/log4shell_ldap_ev1_packets.csv",
+      "segments": "data/segments/log4shell_ldap_ev1_segments.json",
+      "decoded": "data/decoded/log4shell_ldap_ev1_decoded.json",
+      "strategy": "data/strategy/log4shell_ldap_ev1_strategy.pending.json"
+    },
+    "expected_tool_sequence": [
+      "json_segmenter",
+      "encoding_decode_tool",
+      "strategy_precheck",
+      "llm_agent"
+    ],
+    "expected_agent_route": "llm_review",
+    "expected_llm_decision": "retry_same_tool",
+    "expected_agent_tools": [
+      "noise_cleanup_tool"
+    ],
+    "expected_status": "decoded_with_failed_artifacts",
+    "expected_final_file_status": "pending",
+    "expected_failure_type": "failed_artifact_remaining",
+    "expected_final_decoded_payloads": [
+      "ping -c 10 1.1.1.1"
+    ],
+    "expected_final_fields": [
+      "decision",
+      "needs_llm_review",
+      "completion_status",
+      "required_next_action",
+      "decoded_candidates_preview",
+      "failed_candidates_preview",
+      "llm_review_prompt",
+      "llm_review_result",
+      "noise_cleanup_result",
+      "normalized_candidates",
+      "best_normalized_candidates"
+    ],
+    "notes": "1차 디코딩은 성공했지만 failed candidate가 남아 있어 LLM Agent가 retry_same_tool로 판단하는 케이스."
+  },
+  {
+    "case_id": "log4shell_basic_auth_trailing_noise_retry_001",
+    "case_type": "retry_decode_success",
+    "user_query": "Base64 payload 뒤에 trailing noise가 붙어 실패한 후보를 정규화하고 재디코딩해줘.",
+    "input_files": {
+      "decoded": "data/decoded/01_sample_packet_ldap-basic-auth-ev1_decoded.json",
+      "strategy_pending_before_retry": "data/strategy/01_sample_packet_ldap-basic-auth-ev1_strategy.pending.json",
+      "noise_cleanup_result": "data/strategy/01_sample_packet_ldap-basic-auth-ev1_noise_cleanup.result.json",
+      "strategy_done_after_retry": "data/strategy/01_sample_packet_ldap-basic-auth-ev1_strategy.done.json"
+    },
+    "expected_tool_sequence": [
+      "strategy_precheck",
+      "llm_agent",
+      "noise_cleanup_tool",
+      "llm_agent",
+      "retry_encoding"
+    ],
+    "expected_agent_route": [
+      "llm_review",
+      "retry_encoding"
+    ],
+    "expected_llm_decision": "retry_same_tool",
+    "expected_agent_tools": [
+      "noise_cleanup_tool",
+      "retry_encoding"
+    ],
+    "expected_status": "retry_decode_success",
+    "expected_final_file_status": "done",
+    "expected_failure_type": "trailing_base64_noise",
+    "expected_raw_failed_candidate": "cGluZyAtYyAxMCAxLjEuMS4x0",
+    "expected_normalized_candidate": "cGluZyAtYyAxMCAxLjEuMS4x",
+    "expected_final_decoded_payloads": [
+      "ping -c 10 1.1.1.1"
+    ],
+    "expected_noise_options": {
+      "strip_trailing_noise": true,
+      "strip_invalid_base64_chars": true,
+      "repair_base64_padding": true,
+      "trim_trailing_base64_chars": true,
+      "max_trailing_trim": 3
+    },
+    "expected_final_fields": [
+      "decision",
+      "completion_status",
+      "needs_llm_review",
+      "required_next_action",
+      "decoded_candidates_preview",
+      "failed_candidates_preview",
+      "noise_cleanup_result",
+      "normalized_candidates",
+      "best_normalized_candidates",
+      "retry_encoding_result",
+      "final_retry_decoded_candidates",
+      "counts"
+    ],
+    "notes": "현재 구현에서 검증한 핵심 golden case. trailing '0'은 base64 alphabet에 포함되므로 invalid char 제거만으로는 해결되지 않으며, trim_trailing_base64_chars 옵션을 통해 정상 payload를 복구한다."
+  },
+  {
+    "case_id": "log4shell_rmi_x_api_version_ev5_001",
+    "case_type": "sensitive_decoded",
+    "user_query": "HTTP X-Api-Version 헤더와 후속 RMI 응답에서 난독화된 Log4Shell payload를 분석해줘.",
+    "input_files": {
+      "packets": "data/log4shell_rmi_ev5_packets.csv",
+      "segments": "data/segments/log4shell_rmi_ev5_segments.json",
+      "decoded": "data/decoded/log4shell_rmi_ev5_decoded.json",
+      "strategy": "data/strategy/log4shell_rmi_ev5_strategy.pending.json"
+    },
+    "expected_tool_sequence": [
+      "json_segmenter",
+      "encoding_decode_tool",
+      "strategy_precheck",
+      "llm_agent"
+    ],
+    "expected_agent_route": "llm_review",
+    "expected_llm_decision": "stop",
+    "expected_agent_tools": [],
+    "expected_status": "sensitive_decoded",
+    "expected_final_file_status": "done",
+    "expected_failure_type": null,
+    "expected_final_decoded_payloads": [],
+    "expected_final_fields": [
+      "decision",
+      "completion_status",
+      "needs_llm_review",
+      "required_next_action",
+      "decoded_candidates_preview",
+      "residue_candidates_preview",
+      "llm_review_result"
+    ],
+    "notes": "Log4Shell 난독화가 정상적으로 정규화되고 추가 retry가 필요 없다고 판단되는 케이스."
+  },
+  {
+    "case_id": "dns_fragment_base64_001",
+    "case_type": "fragment_failure",
+    "user_query": "DNS label에 쪼개진 Base64 payload가 있는지 확인하고 실패 원인을 분석해줘.",
+    "input_files": {
+      "packets": "data/dns_fragment_base64_packets.csv",
+      "segments": "data/segments/dns_fragment_base64_segments.json",
+      "decoded": "data/decoded/dns_fragment_base64_decoded.json",
+      "strategy": "data/strategy/dns_fragment_base64_strategy.pending.json"
+    },
+    "expected_tool_sequence": [
+      "json_segmenter",
+      "encoding_decode_tool",
+      "strategy_precheck",
+      "llm_agent"
+    ],
+    "expected_agent_route": "llm_review",
+    "expected_llm_decision": "call_other_tool",
+    "expected_agent_tools": [
+      "fragment_reassembly_tool"
+    ],
+    "expected_status": "decode_failed_strategy_required",
+    "expected_final_file_status": "pending",
+    "expected_failure_type": "partial_chunk",
+    "expected_final_decoded_payloads": [],
+    "expected_final_fields": [
+      "decision",
+      "completion_status",
+      "needs_llm_review",
+      "required_next_action",
+      "failed_candidates_preview",
+      "llm_review_prompt",
+      "llm_review_result",
+      "next_tool",
+      "next_tool_input"
+    ],
+    "notes": "현재 구현 범위 밖의 향후 확장 케이스. DNS label 등에 분할된 base64 payload는 fragment_reassembly_tool 추가 후 처리 대상으로 둔다."
+  },
+  {
+    "case_id": "tls_excluded_only_001",
+    "case_type": "excluded_only",
+    "user_query": "TLS/SSL 세션은 제외하고 디코딩 가능한 application-layer content가 있는지 확인해줘.",
+    "input_files": {
+      "packets": "data/tls_excluded_only_packets.csv",
+      "segments": "data/segments/tls_excluded_only_segments.json",
+      "decoded": "data/decoded/tls_excluded_only_decoded.json",
+      "strategy": "data/strategy/tls_excluded_only_strategy.pending.json"
+    },
+    "expected_tool_sequence": [
+      "json_segmenter",
+      "encoding_decode_tool",
+      "strategy_precheck",
+      "llm_agent"
+    ],
+    "expected_agent_route": "llm_review",
+    "expected_llm_decision": "stop_with_exclusion",
+    "expected_agent_tools": [],
+    "expected_status": "partial_excluded",
+    "expected_final_file_status": "done",
+    "expected_failure_type": "encrypted_stream_excluded",
+    "expected_final_decoded_payloads": [],
+    "expected_final_fields": [
+      "decision",
+      "completion_status",
+      "needs_llm_review",
+      "required_next_action",
+      "excluded_streams",
+      "llm_review_result"
+    ],
+    "notes": "TLS/SSL payload는 복호화 키 없이는 본문 디코딩이 불가능하므로 stop_with_exclusion으로 종료하는 케이스."
+  },
+  {
+    "case_id": "auth_challenge_no_candidate_001",
+    "case_type": "no_candidate",
+    "user_query": "HTTP Basic Auth 관련 세션에서 실제 Base64 인증값이 있는지 확인해줘.",
+    "input_files": {
+      "packets": "data/auth_challenge_no_candidate_packets.csv",
+      "segments": "data/segments/auth_challenge_no_candidate_segments.json",
+      "decoded": "data/decoded/auth_challenge_no_candidate_decoded.json",
+      "strategy": "data/strategy/auth_challenge_no_candidate_strategy.done.json"
+    },
+    "expected_tool_sequence": [
+      "json_segmenter",
+      "encoding_decode_tool",
+      "strategy_precheck"
+    ],
+    "expected_agent_route": null,
+    "expected_llm_decision": null,
+    "expected_agent_tools": [],
+    "expected_status": "no_candidate",
+    "expected_final_file_status": "done",
+    "expected_failure_type": null,
+    "expected_final_decoded_payloads": [],
+    "expected_final_fields": [
+      "decision",
+      "completion_status",
+      "needs_llm_review",
+      "required_next_action",
+      "decoded_status",
+      "counts",
+      "reason"
+    ],
+    "notes": "인코딩 후보가 없는 경우. Agent 호출 없이 strategy_precheck 단계에서 done 처리된다."
+  },
+  {
+    "case_id": "base64_invalid_padding_retry_001",
+    "case_type": "retry_decode_success",
+    "user_query": "padding이 깨진 Base64 후보를 복구하고 재디코딩해줘.",
+    "input_files": {
+      "decoded": "data/decoded/base64_invalid_padding_decoded.json",
+      "strategy_pending_before_retry": "data/strategy/base64_invalid_padding_strategy.pending.json",
+      "noise_cleanup_result": "data/strategy/base64_invalid_padding_noise_cleanup.result.json",
+      "strategy_done_after_retry": "data/strategy/base64_invalid_padding_strategy.done.json"
+    },
+    "expected_tool_sequence": [
+      "strategy_precheck",
+      "llm_agent",
+      "noise_cleanup_tool",
+      "llm_agent",
+      "retry_encoding"
+    ],
+    "expected_agent_route": [
+      "llm_review",
+      "retry_encoding"
+    ],
+    "expected_llm_decision": "retry_same_tool",
+    "expected_agent_tools": [
+      "noise_cleanup_tool",
+      "retry_encoding"
+    ],
+    "expected_status": "retry_decode_success",
+    "expected_final_file_status": "done",
+    "expected_failure_type": "invalid_or_missing_base64_padding",
+    "expected_final_decoded_payloads": [],
+    "expected_noise_options": {
+      "repair_base64_padding": true
+    },
+    "expected_final_fields": [
+      "decision",
+      "completion_status",
+      "needs_llm_review",
+      "required_next_action",
+      "noise_cleanup_result",
+      "normalized_candidates",
+      "retry_encoding_result",
+      "final_retry_decoded_candidates"
+    ],
+    "notes": "향후 또는 추가 mock용 케이스. base64 padding 오류 복구가 Agent workflow에서 정상 수행되는지 확인한다."
+  },
+  {
+    "case_id": "url_double_encoded_log4shell_001",
+    "case_type": "future_tool_required",
+    "user_query": "이중 URL 인코딩된 Log4Shell payload를 복원하고 내부 인코딩 후보를 분석해줘.",
+    "input_files": {
+      "packets": "data/url_double_encoded_log4shell_packets.csv",
+      "segments": "data/segments/url_double_encoded_log4shell_segments.json",
+      "decoded": "data/decoded/url_double_encoded_log4shell_decoded.json",
+      "strategy": "data/strategy/url_double_encoded_log4shell_strategy.pending.json"
+    },
+    "expected_tool_sequence": [
+      "json_segmenter",
+      "encoding_decode_tool",
+      "strategy_precheck",
+      "llm_agent"
+    ],
+    "expected_agent_route": "llm_review",
+    "expected_llm_decision": "call_other_tool",
+    "expected_agent_tools": [
+      "url_decode_tool"
+    ],
+    "expected_status": "decode_failed_strategy_required",
+    "expected_final_file_status": "pending",
+    "expected_failure_type": "double_url_encoding",
+    "expected_final_decoded_payloads": [],
+    "expected_final_fields": [
+      "decision",
+      "completion_status",
+      "needs_llm_review",
+      "required_next_action",
+      "failed_candidates_preview",
+      "llm_review_result",
+      "next_tool",
+      "next_tool_input"
+    ],
+    "notes": "향후 확장 로드맵용 golden case. url_decode_tool 추가 시 평가 기준으로 사용한다."
+  }
+]

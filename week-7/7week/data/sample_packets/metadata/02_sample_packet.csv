@@ -1,0 +1,9 @@
+no,time,timestamp,src_ip,dst_ip,src_port,dst_port,protocol,length,info
+4,0.000411,2021-12-21T17:47:35,172.17.0.1,172.17.0.4,56872,8888,HTTP,331,"GET /app/servlet; X-Api-Version contains obfuscated JNDI RMI payload; candidate=http_header.x_api_version"
+6,0.002414,2021-12-21T17:47:35,172.17.0.4,34.91.73.37,58352,1099,RMI,67,"RMI connection attempt to external host 34.91.73.37:1099"
+13,0.004608,2021-12-21T17:47:35,172.17.0.4,34.91.73.37,58356,1099,RMI,73,"JRMI protocol handshake"
+15,0.008588,2021-12-21T17:47:35,34.91.73.37,172.17.0.4,1099,58356,RMI,111,"RMI response; remote hostname returned"
+17,0.008663,2021-12-21T17:47:35,172.17.0.4,34.91.73.37,58356,1099,RMI,82,"RMI client host information sent"
+18,0.008743,2021-12-21T17:47:35,172.17.0.4,34.91.73.37,58356,1099,RMI,116,"RMI lookup request; object name=gp9pc7"
+21,0.013788,2021-12-21T17:47:35,34.91.73.37,172.17.0.4,1099,58356,RMI,1891,"RMI response contains ReferenceWrapper ResourceRef BeanFactory ELProcessor Runtime.exec command; command=ping -c 10 1.1.1.1"
+24,0.024774,2021-12-21T17:47:35,172.17.0.4,172.17.0.1,8888,56872,HTTP,258,"HTTP/1.1 200 OK; response body=This is the standard response"

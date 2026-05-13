@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "data": {
+    "status": "decode_success",
+    "decoded_candidates": [
+      {
+        "segment_no": 4,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "http_header.user_agent.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+        "decoded_preview": "ping -c 10 1.1.1.1",
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "success",
+        "span": {
+          "start": 63,
+          "end": 87
+        },
+        "residue_signals": [],
+        "stream_key": "172.17.0.1:38144-172.17.0.2:8000-tcp",
+        "protocol": "HTTP"
+      }
+    ],
+    "failed_candidates": [],
+    "residue_candidates": [],
+    "excluded_streams": [
+      {
+        "stream_key": "172.17.0.2:46260-34.91.73.37:1399-tcp",
+        "protocol": "TLS",
+        "reason": "encrypted_stream_excluded"
+      },
+      {
+        "stream_key": "34.91.73.37:1399-172.17.0.2:46260-tcp",
+        "protocol": "TLS",
+        "reason": "encrypted_stream_excluded"
+      }
+    ],
+    "checked_streams": 6,
+    "checked_segments": 53
+  },
+  "error": null
+}

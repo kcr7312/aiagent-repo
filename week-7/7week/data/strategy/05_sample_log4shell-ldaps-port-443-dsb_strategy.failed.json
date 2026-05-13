@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "input": "data\\decoded\\05_sample_log4shell-ldaps-port-443-dsb_decoded.json",
+  "decision": "ai_review_required",
+  "needs_llm_review": true,
+  "completion_status": "partial_excluded",
+  "reason": "Visible payload was decoded, but related encrypted/excluded streams remain.",
+  "required_next_action": "reclassify_as_partial_excluded",
+  "decoded_status": "decode_success",
+  "counts": {
+    "decoded_candidates": 1,
+    "failed_candidates": 0,
+    "residue_candidates": 0,
+    "excluded_streams": 2,
+    "checked_streams": 6,
+    "checked_segments": 52
+  },
+  "decoded_candidates_preview": [
+    {
+      "segment_no": 4,
+      "stream_key": "172.17.0.1:38166-172.17.0.2:8000-tcp",
+      "protocol": "HTTP",
+      "position": "nested.base64_path",
+      "source": "http_header.user_agent.base64_path",
+      "candidate_type": "base64",
+      "decode_status": "success",
+      "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "normalized_payload": null,
+      "residue_signals": [],
+      "nested_candidates": []
+    }
+  ],
+  "failed_candidates_preview": [],
+  "residue_candidates_preview": [],
+  "excluded_streams": [
+    {
+      "stream_key": "172.17.0.2:55936-34.91.73.37:443-tcp",
+      "protocol": "TLS",
+      "reason": "encrypted_stream_excluded"
+    },
+    {
+      "stream_key": "34.91.73.37:443-172.17.0.2:55936-tcp",
+      "protocol": "TLS",
+      "reason": "encrypted_stream_excluded"
+    }
+  ],
+  "llm_review_prompt": "You are reviewing decoded packet analysis results.\nDo NOT do broad malware commentary.\nYour task is only to decide whether additional decode verification is needed,\nand whether the case should be classified as stop, retry_same_tool, call_other_tool,\nor stop_with_exclusion.\n\nCurrent completion_status: partial_excluded\nReason: Visible payload was decoded, but related encrypted/excluded streams remain.\n\nDecoded candidates preview:\n[\n  {\n    \"segment_no\": 4,\n    \"stream_key\": \"172.17.0.1:38166-172.17.0.2:8000-tcp\",\n    \"protocol\": \"HTTP\",\n    \"position\": \"nested.base64_path\",\n    \"source\": \"http_header.user_agent.base64_path\",\n    \"candidate_type\": \"base64\",\n    \"decode_status\": \"success\",\n    \"raw\": \"cGluZyAtYyAxMCAxLjEuMS4x\",\n    \"decoded_preview\": \"ping -c 10 1.1.1.1\",\n    \"normalized_payload\": null,\n    \"residue_signals\": [],\n    \"nested_candidates\": []\n  }\n]\n\nFailed candidates preview:\n[]\n\nResidue candidates preview:\n[]\n\nExcluded streams:\n[\n  {\n    \"stream_key\": \"172.17.0.2:55936-34.91.73.37:443-tcp\",\n    \"protocol\": \"TLS\",\n    \"reason\": \"encrypted_stream_excluded\"\n  },\n  {\n    \"stream_key\": \"34.91.73.37:443-172.17.0.2:55936-tcp\",\n    \"protocol\": \"TLS\",\n    \"reason\": \"encrypted_stream_excluded\"\n  }\n]\n\nReturn JSON only with fields:\n{decision, completion_status, requires_additional_verification, reason, recommended_tool, recommended_options}\n",
+  "error": null,
+  "llm_review_error": "LLM request failed after retries: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
+}

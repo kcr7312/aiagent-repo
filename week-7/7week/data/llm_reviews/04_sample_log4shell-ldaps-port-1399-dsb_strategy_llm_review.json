@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "input_strategy": "data\\strategy\\04_sample_log4shell-ldaps-port-1399-dsb_strategy.pending.json",
+  "source_decoded": "data\\decoded\\04_sample_log4shell-ldaps-port-1399-dsb_decoded.json",
+  "llm_profile": "gemini_gemini_3_1_flash_lite_preview",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite-preview",
+  "llm_api_style": "openai_chat_completions",
+  "llm_decision": "stop_with_exclusion",
+  "llm_completion_status": "done",
+  "requires_additional_verification": false,
+  "reason": "The visible HTTP payload was successfully decoded. Remaining streams are encrypted TLS traffic, which cannot be decrypted without session keys or endpoint material.",
+  "recommended_tool": null,
+  "recommended_options": null,
+  "raw_recommended_options": null,
+  "raw_llm_response": "{\n  \"decision\": \"stop_with_exclusion\",\n  \"completion_status\": \"done\",\n  \"requires_additional_verification\": false,\n  \"reason\": \"The visible HTTP payload was successfully decoded. Remaining streams are encrypted TLS traffic, which cannot be decrypted without session keys or endpoint material.\",\n  \"recommended_tool\": null,\n  \"recommended_options\": null\n}",
+  "action_result": null,
+  "error": null
+}

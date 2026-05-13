@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "input": "data\\decoded\\03_sample_packet_ldap-uri-params-ev5_decoded.json",
+  "decision": "stop",
+  "needs_llm_review": false,
+  "completion_status": "no_candidate",
+  "reason": "No encoding candidate was detected.",
+  "required_next_action": null,
+  "decoded_status": "no_encoding_candidate",
+  "counts": {
+    "decoded_candidates": 0,
+    "failed_candidates": 0,
+    "residue_candidates": 0,
+    "excluded_streams": 0,
+    "checked_streams": 0,
+    "checked_segments": 0
+  },
+  "decoded_candidates_preview": [],
+  "failed_candidates_preview": [],
+  "residue_candidates_preview": [],
+  "excluded_streams": [],
+  "llm_review_prompt": null,
+  "error": null
+}
