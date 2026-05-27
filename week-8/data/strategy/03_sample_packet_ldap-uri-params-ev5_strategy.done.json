@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "input": "data\\decoded\\03_sample_packet_ldap-uri-params-ev5_decoded.json",
+  "decision": "stop",
+  "needs_llm_review": false,
+  "completion_status": "no_candidate",
+  "reason": "No encoding candidate was detected.",
+  "required_next_action": null,
+  "decoded_status": "no_encoding_candidate",
+  "counts": {
+    "decoded_candidates": 0,
+    "failed_candidates": 0,
+    "residue_candidates": 0,
+    "url_encoded_candidates": 0,
+    "excluded_streams": 0,
+    "checked_streams": 0,
+    "checked_segments": 0
+  },
+  "decoded_candidates_preview": [],
+  "failed_candidates_preview": [],
+  "residue_candidates_preview": [],
+  "url_encoded_candidates_preview": [],
+  "excluded_streams": [],
+  "recommended_tool_hint": null,
+  "tool_routing_hints": {
+    "url_decode_tool": {
+      "enabled": false,
+      "reason": "Use when percent-encoded URI/query/header/payload candidates are present.",
+      "preferred_decision": "call_other_tool",
+      "default_options": {
+        "recursive": true,
+        "max_depth": 2,
+        "plus_as_space": true,
+        "deduplicate": true
+      }
+    }
+  },
+  "llm_review_prompt": null,
+  "error": null
+}

@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "input_strategy": "data\\strategy\\05_sample_log4shell-ldaps-port-443-dsb_strategy.pending.json",
+  "source_decoded": "data\\decoded\\05_sample_log4shell-ldaps-port-443-dsb_decoded.json",
+  "llm_profile": "gemini_gemini_3_1_flash_lite",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_api_style": "openai_chat_completions",
+  "llm_decision": "stop_with_exclusion",
+  "llm_completion_status": "partial_excluded",
+  "requires_additional_verification": false,
+  "reason": "The visible payload was successfully decoded, and the remaining unresolved items are encrypted TLS streams which cannot be decrypted without session keys.",
+  "recommended_tool": null,
+  "recommended_options": null,
+  "raw_recommended_options": null,
+  "raw_llm_response": "{\n  \"decision\": \"stop_with_exclusion\",\n  \"completion_status\": \"partial_excluded\",\n  \"requires_additional_verification\": false,\n  \"reason\": \"The visible payload was successfully decoded, and the remaining unresolved items are encrypted TLS streams which cannot be decrypted without session keys.\",\n  \"recommended_tool\": null,\n  \"recommended_options\": null\n}",
+  "action_result": null,
+  "error": null,
+  "llm_duration_ms": 11704,
+  "action_duration_ms": 0,
+  "auto_continue_enabled": false,
+  "auto_continue_result": null
+}

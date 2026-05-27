@@ -1,0 +1,22 @@
+no,time,timestamp_epoch,src_ip,dst_ip,src_port,dst_port,protocol,length,info
+4,0.000092,1639517650.860236,172.17.0.1,172.17.0.2,38166,8000,HTTP,215,GET /test; User-Agent contains JNDI LDAPS payload; candidate=http_header.user_agent; callback=ldaps.suspect.network:443
+6,0.004498,1639517650.864642,172.17.0.2,34.91.73.37,55936,443,TCP/TLS,0,LDAPS TCP control packet
+9,0.009721,1639517650.869865,172.17.0.2,34.91.73.37,55936,443,TLS/LDAPS,220,TLS ClientHello to LDAPS callback endpoint; encrypted payload; DSB CLIENT_RANDOM present
+11,0.010580,1639517650.870724,34.91.73.37,172.17.0.2,443,55936,TLS/LDAPS,4096,TLS ServerHello/Certificate from LDAPS callback endpoint; encrypted LDAP over TLS
+13,0.012236,1639517650.872380,34.91.73.37,172.17.0.2,443,55936,TLS/LDAPS,1055,TLS ServerHello/Certificate from LDAPS callback endpoint; encrypted LDAP over TLS
+15,0.028297,1639517650.888441,172.17.0.2,34.91.73.37,55936,443,TLS/LDAPS,75,TLS record for LDAPS callback; encrypted
+17,0.033182,1639517650.893326,172.17.0.2,34.91.73.37,55936,443,TLS/LDAPS,6,TLS record for LDAPS callback; encrypted
+19,0.033753,1639517650.893897,172.17.0.2,34.91.73.37,55936,443,TLS/LDAPS,101,TLS record for LDAPS callback; encrypted
+21,0.034317,1639517650.894461,34.91.73.37,172.17.0.2,443,55936,TLS/LDAPS,107,TLS record for LDAPS callback; encrypted
+23,0.038023,1639517650.898167,172.17.0.2,34.91.73.37,55936,443,TLS/LDAPS,85,Encrypted LDAPS application data; payload not directly decodable without TLS secrets
+25,0.039829,1639517650.899973,34.91.73.37,172.17.0.2,443,55936,TLS/LDAPS,85,TLS record for LDAPS callback; encrypted
+27,0.040742,1639517650.900886,172.17.0.2,34.91.73.37,55936,443,TLS/LDAPS,197,Encrypted LDAPS application data; payload not directly decodable without TLS secrets
+28,0.043809,1639517650.903953,34.91.73.37,172.17.0.2,443,55936,TLS/LDAPS,293,Encrypted LDAPS application data; payload not directly decodable without TLS secrets
+30,0.045236,1639517650.905380,172.17.0.2,34.91.73.37,54814,8080,TCP/HTTP,0,HTTP class download TCP control packet
+33,0.046151,1639517650.906295,172.17.0.2,34.91.73.37,54814,8080,HTTP,179,GET Java class payload over HTTP; User-Agent=Java/1.8.0_181
+35,0.048440,1639517650.908584,34.91.73.37,172.17.0.2,8080,54814,HTTP,78,HTTP 200 OK for Java class response; Content-length=1217
+37,0.048776,1639517650.908920,34.91.73.37,172.17.0.2,8080,54814,HTTP-DATA,1217,Java class binary payload; contains Runtime.exec and command string
+40,0.051912,1639517650.912056,172.17.0.2,34.91.73.37,55936,443,TLS/LDAPS,117,TLS record for LDAPS callback; encrypted
+41,0.052203,1639517650.912347,172.17.0.2,34.91.73.37,55936,443,TLS/LDAPS,85,TLS record for LDAPS callback; encrypted
+47,0.055777,1639517650.915921,172.17.0.2,172.17.0.1,8000,38166,HTTP,76,Original HTTP response header; Content-length=20
+49,0.055866,1639517650.916010,172.17.0.2,172.17.0.1,8000,38166,HTTP,20,Original HTTP response body: This is the response

@@ -1,0 +1,77 @@
+{
+  "ok": true,
+  "input": "data\\decoded\\04_sample_log4shell-ldaps-port-1399-dsb_decoded.json",
+  "decision": "stop_with_exclusion",
+  "needs_llm_review": false,
+  "completion_status": "partial_excluded",
+  "reason": "Visible payload was decoded, but related encrypted/excluded streams remain.",
+  "required_next_action": null,
+  "decoded_status": "decode_success",
+  "counts": {
+    "decoded_candidates": 1,
+    "failed_candidates": 0,
+    "residue_candidates": 0,
+    "url_encoded_candidates": 0,
+    "excluded_streams": 2,
+    "checked_streams": 6,
+    "checked_segments": 53
+  },
+  "decoded_candidates_preview": [
+    {
+      "segment_no": 4,
+      "stream_key": "172.17.0.1:38144-172.17.0.2:8000-tcp",
+      "protocol": "HTTP",
+      "position": "nested.base64_path",
+      "source": "http_header.user_agent.base64_path",
+      "candidate_type": "base64",
+      "decode_status": "success",
+      "raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "normalized_payload": null,
+      "residue_signals": [],
+      "nested_candidates": []
+    }
+  ],
+  "failed_candidates_preview": [],
+  "residue_candidates_preview": [],
+  "url_encoded_candidates_preview": [],
+  "excluded_streams": [
+    {
+      "stream_key": "172.17.0.2:46260-34.91.73.37:1399-tcp",
+      "protocol": "TLS",
+      "reason": "encrypted_stream_excluded"
+    },
+    {
+      "stream_key": "34.91.73.37:1399-172.17.0.2:46260-tcp",
+      "protocol": "TLS",
+      "reason": "encrypted_stream_excluded"
+    }
+  ],
+  "recommended_tool_hint": null,
+  "tool_routing_hints": {
+    "url_decode_tool": {
+      "enabled": false,
+      "reason": "Use when percent-encoded URI/query/header/payload candidates are present.",
+      "preferred_decision": "call_other_tool",
+      "default_options": {
+        "recursive": true,
+        "max_depth": 2,
+        "plus_as_space": true,
+        "deduplicate": true
+      }
+    }
+  },
+  "llm_review_prompt": "You are reviewing decoded packet analysis results.\nDo NOT do broad malware commentary.\nYour task is only to decide whether additional decode verification is needed,\nand whether the case should be classified as stop, retry_same_tool, call_other_tool,\nor stop_with_exclusion.\n\nCurrent completion_status: partial_excluded\nReason: Visible payload was decoded, but related encrypted/excluded streams remain.\n\nDecoded candidates preview:\n[\n  {\n    \"segment_no\": 4,\n    \"stream_key\": \"172.17.0.1:38144-172.17.0.2:8000-tcp\",\n    \"protocol\": \"HTTP\",\n    \"position\": \"nested.base64_path\",\n    \"source\": \"http_header.user_agent.base64_path\",\n    \"candidate_type\": \"base64\",\n    \"decode_status\": \"success\",\n    \"raw\": \"cGluZyAtYyAxMCAxLjEuMS4x\",\n    \"decoded_preview\": \"ping -c 10 1.1.1.1\",\n    \"normalized_payload\": null,\n    \"residue_signals\": [],\n    \"nested_candidates\": []\n  }\n]\n\nFailed candidates preview:\n[]\n\nResidue candidates preview:\n[]\n\nURL-encoded candidates preview:\n[]\n\nURL-encoded routing guidance:\n- If URL-encoded candidates preview is not empty, prefer decision = call_other_tool.\n- In that case, set recommended_tool = url_decode_tool.\n- Use recommended_options such as recursive=true, max_depth=2, plus_as_space=true, deduplicate=true.\n- Do not use noise_cleanup_tool for percent-encoded URI/query/header values unless the issue is actually base64 suffix noise.\n\nExcluded streams:\n[\n  {\n    \"stream_key\": \"172.17.0.2:46260-34.91.73.37:1399-tcp\",\n    \"protocol\": \"TLS\",\n    \"reason\": \"encrypted_stream_excluded\"\n  },\n  {\n    \"stream_key\": \"34.91.73.37:1399-172.17.0.2:46260-tcp\",\n    \"protocol\": \"TLS\",\n    \"reason\": \"encrypted_stream_excluded\"\n  }\n]\n\nReturn JSON only with fields:\n{decision, completion_status, requires_additional_verification, reason, recommended_tool, recommended_options}\n",
+  "error": null,
+  "llm_review_result": {
+    "decision": "stop_with_exclusion",
+    "completion_status": "partial_excluded",
+    "requires_additional_verification": false,
+    "reason": "The visible HTTP payload has been successfully decoded. The remaining unresolved items are encrypted TLS streams, which cannot be decrypted without session keys or endpoint material.",
+    "recommended_tool": null,
+    "recommended_options": null,
+    "raw_recommended_options": null,
+    "action_result": null,
+    "llm_review_output_file": "data\\llm_reviews\\04_sample_log4shell-ldaps-port-1399-dsb_strategy_llm_review.json"
+  }
+}

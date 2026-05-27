@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "data": {
+    "status": "no_encoding_candidate",
+    "decoded_candidates": [],
+    "failed_candidates": [],
+    "residue_candidates": [],
+    "excluded_streams": [],
+    "checked_streams": 0,
+    "checked_segments": 0
+  },
+  "error": null
+}

@@ -1,0 +1,953 @@
+{
+  "ok": true,
+  "tool": "noise_cleanup_tool",
+  "mode": "normalization_only",
+  "source_file": "data\\strategy\\01_sample_packet_ldap-basic-auth-ev1_strategy.pending.json",
+  "source_input": "data\\decoded\\01_sample_packet_ldap-basic-auth-ev1_decoded.json",
+  "source_decoded": null,
+  "options": {
+    "url_decode_before_base64": false,
+    "strip_whitespace": true,
+    "strip_trailing_noise": true,
+    "strip_invalid_base64_chars": true,
+    "repair_base64_padding": true,
+    "trim_trailing_base64_chars": true,
+    "max_trailing_trim": 3,
+    "deduplicate": true,
+    "min_base64_length": 8
+  },
+  "candidate_count": 4,
+  "normalized_candidate_count": 36,
+  "base64_decodable_candidate_count": 12,
+  "candidates": [
+    {
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "original_candidate": {
+        "segment_no": 15,
+        "stream_key": "34.91.73.37:1389-172.17.0.3:54590-tcp",
+        "protocol": "TCP",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "candidate_type": "base64",
+        "decode_status": "failed",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+        "decoded_preview": null,
+        "normalized_payload": null,
+        "residue_signals": [],
+        "nested_candidates": []
+      }
+    },
+    {
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "original_candidate": {
+        "segment_no": 44,
+        "stream_key": "34.91.73.37:1389-172.17.0.3:54594-tcp",
+        "protocol": "TCP",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "candidate_type": "base64",
+        "decode_status": "failed",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+        "decoded_preview": null,
+        "normalized_payload": null,
+        "residue_signals": [],
+        "nested_candidates": []
+      }
+    },
+    {
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "original_candidate": {
+        "segment_no": 70,
+        "stream_key": "34.91.73.37:1389-172.17.0.3:54596-tcp",
+        "protocol": "TCP",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "candidate_type": "base64",
+        "decode_status": "failed",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+        "decoded_preview": null,
+        "normalized_payload": null,
+        "residue_signals": [],
+        "nested_candidates": []
+      }
+    },
+    {
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "original_candidate": {
+        "segment_no": 96,
+        "stream_key": "34.91.73.37:1389-172.17.0.3:54598-tcp",
+        "protocol": "TCP",
+        "position": "nested.base64_path",
+        "source": "tcp_payload.text.base64_path",
+        "candidate_type": "base64",
+        "decode_status": "failed",
+        "raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+        "decoded_preview": null,
+        "normalized_payload": null,
+        "residue_signals": [],
+        "nested_candidates": []
+      }
+    }
+  ],
+  "normalized_candidates": [
+    {
+      "source_candidate_index": 0,
+      "variant_index": 0,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalization_steps": [
+        "original"
+      ],
+      "changed": false,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 1,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0===",
+      "normalization_steps": [
+        "strip_trailing_noise",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 2,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 3,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 4,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 5,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:3"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 6,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS==",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:3",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 7,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0==",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 8,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 0,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalization_steps": [
+        "original"
+      ],
+      "changed": false,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 1,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0===",
+      "normalization_steps": [
+        "strip_trailing_noise",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 2,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 3,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 4,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 5,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:3"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 6,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS==",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:3",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 7,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0==",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 8,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 0,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalization_steps": [
+        "original"
+      ],
+      "changed": false,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 1,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0===",
+      "normalization_steps": [
+        "strip_trailing_noise",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 2,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 3,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 4,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 5,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:3"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 6,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS==",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:3",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 7,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0==",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 8,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 0,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalization_steps": [
+        "original"
+      ],
+      "changed": false,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 1,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0===",
+      "normalization_steps": [
+        "strip_trailing_noise",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 2,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 3,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 4,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 5,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:3"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 6,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS==",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:3",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 7,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0==",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 8,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x0=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2"
+      ],
+      "changed": true,
+      "base64_decode_possible": false,
+      "decoded_preview": null,
+      "printable_ratio": null,
+      "score_hint": 0.9
+    }
+  ],
+  "best_candidates": [
+    {
+      "source_candidate_index": 0,
+      "variant_index": 2,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 1,
+      "variant_index": 2,
+      "source_field": "failed_candidates_preview",
+      "source_index": 1,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 2,
+      "variant_index": 2,
+      "source_field": "failed_candidates_preview",
+      "source_index": 2,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 3,
+      "variant_index": 2,
+      "source_field": "failed_candidates_preview",
+      "source_index": 3,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4x",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:1"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.1",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    },
+    {
+      "source_candidate_index": 0,
+      "variant_index": 4,
+      "source_field": "failed_candidates_preview",
+      "source_index": 0,
+      "candidate_type": "base64",
+      "position": "nested.base64_path",
+      "source": "tcp_payload.text.base64_path",
+      "failure_type": null,
+      "original_raw": "cGluZyAtYyAxMCAxLjEuMS4x0",
+      "normalized_raw": "cGluZyAtYyAxMCAxLjEuMS4=",
+      "normalization_steps": [
+        "trim_trailing_base64_chars:2",
+        "repair_base64_padding"
+      ],
+      "changed": true,
+      "base64_decode_possible": true,
+      "decoded_preview": "ping -c 10 1.1.1.",
+      "printable_ratio": 1.0,
+      "score_hint": 1.0
+    }
+  ]
+}

